@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: NewTask
+  m_EditorClassIdentifier: 
+  taskId: 
+  taskName: 
+  description_Zh: 
+  completionConditions:
+  - rid: 6700617969072078849
+  onStartActions: []
+  onCompleteActions:
+  - rid: 6700617969072078848
+  status: 0
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 6700617969072078848
+      type: {class: GiveItemAction, ns: , asm: Assembly-CSharp}
+      data:
+        itemID: 
+        amount: 1
+    - rid: 6700617969072078849
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: 
+        dialogueID: 
+        mustBeFullyRead: 1
