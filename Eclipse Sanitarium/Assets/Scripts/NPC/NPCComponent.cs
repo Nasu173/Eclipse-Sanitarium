@@ -21,6 +21,9 @@ public class NPCComponent : MonoBehaviour, IInteractable
     public DialogueTrriger dialogueTrigger;
     public NPCCameraLock cameraLock;
 
+    [Header("呓语系统")]
+    public NPCWhisper whisperSystem;
+
     [Header("视觉表现")]
     [Tooltip("NPC的不同阶段模型")]
     public List<PhaseModel> phaseModels;
@@ -48,6 +51,12 @@ public class NPCComponent : MonoBehaviour, IInteractable
     {
         // 初始化模型阶段
         UpdatePhaseModel();
+
+        // 获取呓语组件
+        if (whisperSystem == null)
+        {
+            whisperSystem = GetComponent<NPCWhisper>();
+        }
     }
 
     /// <summary>
@@ -102,11 +111,17 @@ public class NPCComponent : MonoBehaviour, IInteractable
 
         currentPhase = newPhase;
         UpdatePhaseModel();
+
+        // 刷新呓语内容
+        if (whisperSystem != null)
+        {
+            whisperSystem.RefreshWhisper();
+        }
+
         onPhaseChange?.Invoke();
 
         Debug.Log($"NPC {npcDisplayName} 进入阶段 {newPhase}");
     }
-
     /// <summary>
     /// 获取当前NPC的名称
     /// </summary>
