@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Task05
   m_EditorClassIdentifier: 
   taskId: Task_05_RespondCall_203
-  taskName: "响应203房呼叫"
-  description_Zh: "203房呼叫铃响起，地图标记。玩家进入203房范围，触发与李明阳的对话。"
+  taskName: "05.\u54CD\u5E94\u547C\u53EB"
+  taskName_En: 05. Respond to Call
+  description_Zh: "\u54CD\u5E94203\u623F \u5217\u592B\xB7\u53F6\u83F2\u83AB\u592B\u7684\u7D27\u6025\u547C\u53EB\u94C3\u3002"
+  description_En: Respond to the emergency call bell from Lev Yefimov in Room 203.
   completionConditions:
   - rid: 50001
   onStartActions:
   - rid: 50002
   - rid: 50003
   onCompleteActions: []
-  status: 0
+  status: 1
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -32,7 +34,7 @@ MonoBehaviour:
     - rid: 50001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完成与李明阳的对话"
+        description: "\u5B8C\u6210\u4E0E\u674E\u660E\u9633\u7684\u5BF9\u8BDD"
         dialogueID: LiMingYang_Dialogue_Complete
         mustBeFullyRead: 1
     - rid: 50002

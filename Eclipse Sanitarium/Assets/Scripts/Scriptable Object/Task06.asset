@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Task06
   m_EditorClassIdentifier: 
   taskId: Task_06_GoTo3F
-  taskName: "前往三楼"
-  description_Zh: "解锁三楼门禁区域。玩家到达三楼门口区域，触发选择（进入/不进入）。"
+  taskName: "06.\u95E8\u7981\u5F02\u5E38"
+  taskName_En: "06. Access Abnormal"
+  description_Zh: "\u524D\u5F80\u4E09\u697C\u67E5\u770B\u3002"
+  description_En: "Go to the third floor to check out the abnormal access."
   completionConditions:
   - rid: 60001
   onStartActions:
   - rid: 60002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -31,7 +33,7 @@ MonoBehaviour:
     - rid: 60001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "触发进入/不进入的选择"
+        description: "\u89E6\u53D1\u8FDB\u5165/\u4E0D\u8FDB\u5165\u7684\u9009\u62E9"
         dialogueID: 3F_Entrance_Choice_Made
         mustBeFullyRead: 1
     - rid: 60002

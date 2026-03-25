@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Task20B
   m_EditorClassIdentifier: 
   taskId: Task_20B_EndingResist
-  taskName: "结局B：拒绝转化"
-  description_Zh: "选择结局B。引导玩家前往配电室操作电闸（小游戏）。停电后触发追逐战，护士长AI激活。玩家需逃往地下室，在地下室利用"月光透镜"机关延缓护士长，最终进入通风管道。"
+  taskName: "20B. \u5730\u4E0B\u8FFD\u9010\u4E0E\u9003\u79BB"
+  taskName_En: "20B. Underground Chase and Escape"
+  description_Zh: "\u5229\u7528\u900F\u955C\u9003\u79BB\u62A4\u58EB\u957F"
+  description_En: "Use the lens to escape the Head Nurse."
   completionConditions:
   - rid: 200201
   onStartActions:
   - rid: 200202
-  - rid: 200203
   onCompleteActions:
-  - rid: 200204
+  - rid: 200203
   status: 0
   currentProgress: 0
   totalProgress: 1
@@ -31,20 +32,15 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: 200201
-      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      type: {class: WorldEventCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "成功进入通风管道"
-        dialogueID: EndingB_VentEnter_Complete
-        mustBeFullyRead: 1
+        description: "\u6210\u529F\u9003\u79BB\u7BA1\u9053\u5E76\u5728\u5916\u90E8\u53D1\u751F\u7578\u53D8"
+        eventName: EndingB_Distortion_Complete
     - rid: 200202
       type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
       data:
-        eventName: Unlock_PowerRoom_And_StartMinigame
+        eventName: Activate_HeadNurse_Chase_Sequence
     - rid: 200203
-      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
-      data:
-        eventName: Activate_HeadNurse_Chase_AI
-    - rid: 200204
       type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
       data:
         eventName: Play_EndingB_Credits_Roll

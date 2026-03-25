@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Task13
   m_EditorClassIdentifier: 
   taskId: Task_13_MoonlightBath_Deep
-  taskName: "深入月光浴室"
-  description_Zh: "持有"基因关联报告"后，再次前往三楼。月光浴室门解锁。进入后播放过场动画，解锁控制台"监控日志"交互点。阅读后，触发护士长警告语音。"
+  taskName: "13.\u8FDD\u7981\u7684\u6DF1\u5165"
+  taskName_En: "13. Forbidden Depths"
+  description_Zh: "\u4F7F\u7528\u627E\u5230\u7684\u7EBF\u7D22\uFF0C\u5C1D\u8BD5\u8FDB\u5165\u6708\u5149\u6D74\u5BA4\u533A\u57DF"
+  description_En: "Use the found clues to try to enter the Moonlight Bath area."
   completionConditions:
   - rid: 130001
   onStartActions:
@@ -22,18 +24,18 @@ MonoBehaviour:
   - rid: 130003
   onCompleteActions:
   - rid: 130004
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 130001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "阅读监控日志后触发"
+        description: "\u9605\u8BFB\u76D1\u63A7\u65E5\u5FD7\u540E\u89E6\u53D1"
         dialogueID: MoonlightBath_MonitorLog_Read
         mustBeFullyRead: 1
     - rid: 130002

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NPCCameraLock : MonoBehaviour
 {
+    public static bool IsCameraLockActive = false;
     [Header("镜头对焦设置")]
     public Transform focusTarget;             // 聚焦的目标（没填则默认看向自己）
     public Vector3 cameraOffset = new Vector3(0, 1.5f, -2f);  // 镜头偏移量
@@ -45,6 +46,7 @@ public class NPCCameraLock : MonoBehaviour
 
     private IEnumerator LockCoroutine()
     {
+        IsCameraLockActive = true;
         _isLocking = true;
 
         // 1. 冻结玩家的移动和转头
@@ -142,5 +144,6 @@ public class NPCCameraLock : MonoBehaviour
         }
 
         _isLocking = false;
+        IsCameraLockActive = false;
     }
 }

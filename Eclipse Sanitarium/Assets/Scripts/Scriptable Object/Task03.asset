@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Task03
   m_EditorClassIdentifier: 
   taskId: Task_03_FirstMeds_201
-  taskName: "为201房送药"
-  description_Zh: "在201房生成“药瓶”交互点。玩家交互后，播放放药动画，标记任务完成。"
+  taskName: "03.\u9996\u6B21\u9001\u836F"
+  taskName_En: "03. First Medication"
+  description_Zh: "\u4E3A201\u623F\u7684\u9648\u58A8\u9001\u53BB\u591C\u95F4\u836F\u7269\u3002"
+  description_En: "Deliver night medication to Chen Mo in Room 201."
   completionConditions:
   - rid: 30001
   onStartActions:
   - rid: 30002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -31,7 +33,7 @@ MonoBehaviour:
     - rid: 30001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "交互并播放动画后触发"
+        description: "\u4EA4\u4E92\u5E76\u64AD\u653E\u52A8\u753B\u540E\u89E6\u53D1"
         dialogueID: Deliver_Med_201_Animation_End
         mustBeFullyRead: 1
     - rid: 30002

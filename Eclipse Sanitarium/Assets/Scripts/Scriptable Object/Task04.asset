@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Task04
   m_EditorClassIdentifier: 
   taskId: Task_04_LogRecord
-  taskName: "填写巡查日志"
-  description_Zh: "解锁护士站电脑交互。玩家交互后，打开日志填写UI（提供选项），选择后标记完成。"
+  taskName: "04.\u5DE1\u67E5\u8BB0\u5F55"
+  taskName_En: "04. Patrol Log"
+  description_Zh: "\u5728\u62A4\u58EB\u7AD9\u7535\u8111\u4E0A\u5B8C\u6210\u9996\u6B21\u7535\u5B50\u5DE1\u67E5\u8BB0\u5F55\u3002"
+  description_En: "Complete the first electronic patrol log on the nurses' station computer."
   completionConditions:
   - rid: 40001
   onStartActions:
   - rid: 40002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -31,7 +33,7 @@ MonoBehaviour:
     - rid: 40001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "提交日志后触发"
+        description: "\u63D0\u4EA4\u65E5\u5FD7\u540E\u89E6\u53D1"
         dialogueID: Patrol_Log_Submitted
         mustBeFullyRead: 1
     - rid: 40002

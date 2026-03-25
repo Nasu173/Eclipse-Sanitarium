@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Task02
   m_EditorClassIdentifier: 
   taskId: Task_02_ReadManual
-  taskName: "阅读守则"
-  description_Zh: "仔细阅读护士站张贴的《守则》。"
+  taskName: "02.\u521D\u6765\u4E4D\u5230"
+  taskName_En: "02. Newcomer"
+  description_Zh: "\u4ED4\u7EC6\u9605\u8BFB\u62A4\u58EB\u7AD9\u5F20\u8D34\u7684\u300A\u5B88\u5219\u300B\u3002"
+  description_En: "Carefully read the \"Rules\" posted at the nurses' station."
   completionConditions:
   - rid: 20001
   onStartActions:
   - rid: 20002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -31,7 +33,7 @@ MonoBehaviour:
     - rid: 20001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完成阅读守则的操作"
+        description: "\u5B8C\u6210\u9605\u8BFB\u5B88\u5219\u7684\u64CD\u4F5C"
         dialogueID: Manual_Content_Read
         mustBeFullyRead: 1
     - rid: 20002

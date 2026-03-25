@@ -13,25 +13,27 @@ MonoBehaviour:
   m_Name: Task09
   m_EditorClassIdentifier: 
   taskId: Task_09_ReportToHeadNurse
-  taskName: "向护士长报告"
-  description_Zh: "进入护士长办公室范围。触发与护士长的固定对话。对话结束后，获得"图书馆钥匙"，标记任务完成。"
+  taskName: "09.\u62A5\u544A\u4E0E\u652F\u5F00"
+  taskName_En: "09. Report and Dismissal"
+  description_Zh: "\u5411\u62A4\u58EB\u957F\u62A5\u544A203\u623F\u7684\u5931\u8E2A\u4E8B\u4EF6"
+  description_En: "Report the disappearance in Room 203 to the Head Nurse."
   completionConditions:
   - rid: 90001
   onStartActions: []
   onCompleteActions:
   - rid: 90002
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 90001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完成与护士长的固定对话"
+        description: "\u5B8C\u6210\u4E0E\u62A4\u58EB\u957F\u7684\u56FA\u5B9A\u5BF9\u8BDD"
         dialogueID: HeadNurse_Report_Dialogue
         mustBeFullyRead: 1
     - rid: 90002

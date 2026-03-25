@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Task20A
   m_EditorClassIdentifier: 
   taskId: Task_20A_EndingAccept
-  taskName: "结局A：接受转化"
-  description_Zh: "选择结局A。在月光浴室播放一段不可操作的结局动画序列，播放职员表。"
+  taskName: "20A. \u9759\u8C27\u624E\u6839"
+  taskName_En: "20A. Silent Roots"
+  description_Zh: "\u8D70\u5165\u6C60\u4E2D"
+  description_En: "Walk into the pool."
   completionConditions: []
   onStartActions:
   - rid: 200101
-  - rid: 200102
   onCompleteActions: []
   status: 0
   currentProgress: 0
@@ -31,8 +32,4 @@ MonoBehaviour:
     - rid: 200101
       type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
       data:
-        eventName: Play_EndingA_Cutscene_Sequence
-    - rid: 200102
-      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
-      data:
-        eventName: Play_Credits_Roll
+        eventName: Play_EndingA_Sequence

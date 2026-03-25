@@ -333,8 +333,11 @@ public class DialogueManager : MonoBehaviour
         if (_currentDialogue != null && _currentDialogue.CurrentTaskWillComplete)
         {
             Debug.Log("对话结束，触发任务完成");
-            // 这里可以调用任务系统
-            // TaskSystem.Instance?.CompleteCurrentTask();
+            // 调用任务系统完成当前任务
+            if (TaskManager.Instance != null)
+            {
+                TaskManager.Instance.RequestTaskCompletion();
+            }
         }
 
         // 恢复玩家输入

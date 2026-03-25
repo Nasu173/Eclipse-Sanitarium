@@ -13,32 +13,34 @@ MonoBehaviour:
   m_Name: Task15
   m_EditorClassIdentifier: 
   taskId: Task_15_InfiltrateArchive
-  taskName: "潜入绝密档案室"
-  description_Zh: "持有"举报信"，并找到"维修钥匙卡"。使用钥匙卡打开档案室门。进入后，解锁室内所有电脑和监控的交互。"
+  taskName: "15.\u6863\u6848\u5BA4\u5165\u4FB5"
+  taskName_En: "15. Archive Infiltration"
+  description_Zh: "\u6F5C\u5165\u7EDD\u5BC6\u6863\u6848\u5BA4\u83B7\u53D6\u6838\u5FC3\u8BC1\u636E\u3002"
+  description_En: "Infiltrate the highly confidential archive room to obtain core evidence."
   completionConditions:
   - rid: 150001
   - rid: 150002
   onStartActions: []
   onCompleteActions:
   - rid: 150003
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 2
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 150001
       type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "持有举报信"
+        description: "\u6301\u6709\u4E3E\u62A5\u4FE1"
         itemID: Item_BrokenReport
         amount: 1
     - rid: 150002
       type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "持有维修钥匙卡"
+        description: "\u6301\u6709\u7EF4\u4FEE\u94A5\u5319\u5361"
         itemID: Item_MaintenanceKeycard
         amount: 1
     - rid: 150003
