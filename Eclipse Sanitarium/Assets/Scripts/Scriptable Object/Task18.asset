@@ -13,25 +13,32 @@ MonoBehaviour:
   m_Name: Task18
   m_EditorClassIdentifier: 
   taskId: Task_18_DiscoverMedRecord
+<<<<<<< Updated upstream
+  taskName: "18.\u60A3\u8005\u75C5\u5386"
+  taskName_En: "18. Patient Medical Record"
+  description_Zh: "\u5728\u6863\u6848\u5BA4\u627E\u5230\u201C\u5F53\u524D\u5165\u9662\u8005\u540D\u5355\u201D"
+  description_En: "Find the \"Current Admission List\" in the archive room."
+=======
   taskName: "发现患者病历"
-  description_Zh: "与档案室"入院者名单"文件交互。在名单中找到并点击玩家角色名，打开"玩家病历"UI，显示诊断信息。随后，门自动上锁。"
+  description_Zh: '与档案室"入院者名单"文件交互。在名单中找到并点击玩家角色名，打开"玩家病历"UI，显示诊断信息。随后，门自动上锁。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 180001
   onStartActions: []
   onCompleteActions:
   - rid: 180002
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: 8b5c90b3ffbb0f04c99554bf5b722aa1, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 180001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完整阅读玩家病历诊断信息"
+        description: "\u5B8C\u6574\u9605\u8BFB\u73A9\u5BB6\u75C5\u5386\u8BCA\u65AD\u4FE1\u606F"
         dialogueID: Archive_PlayerRecord_Read
         mustBeFullyRead: 1
     - rid: 180002

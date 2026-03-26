@@ -13,23 +13,30 @@ MonoBehaviour:
   m_Name: Task17
   m_EditorClassIdentifier: 
   taskId: Task_17_CheckExternalCamera
+<<<<<<< Updated upstream
+  taskName: "17.\u5F7C\u65F6\u5F7C\u523B"
+  taskName_En: "17. Meanwhile"
+  description_Zh: "\u5207\u6362\u76D1\u63A7\u5C4F\u5E55\u81F3\u7597\u517B\u9662\u5916\u90E8\u3002"
+  description_En: "Switch the monitoring screen to the outside of the sanitarium."
+=======
   taskName: "查看外部监控"
-  description_Zh: "与档案室监控墙交互。切换监控画面至外部隔离区，播放一段循环的恐怖影像。"
+  description_Zh: '与档案室监控墙交互。切换监控画面至外部隔离区，播放一段循环的恐怖影像。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 170001
   onStartActions: []
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 170001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完成监控画面查看"
+        description: "\u5B8C\u6210\u76D1\u63A7\u753B\u9762\u67E5\u770B"
         dialogueID: Archive_ExternalCamera_Viewed
         mustBeFullyRead: 1

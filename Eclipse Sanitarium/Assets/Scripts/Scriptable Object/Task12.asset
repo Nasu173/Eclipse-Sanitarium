@@ -13,25 +13,32 @@ MonoBehaviour:
   m_Name: Task12
   m_EditorClassIdentifier: 
   taskId: Task_12_InvestigateStorage
+<<<<<<< Updated upstream
+  taskName: "12.\u50A8\u7269\u5BA4\u7684\u79D8\u5BC6"
+  taskName_En: "12. Storage Room Secret"
+  description_Zh: "\u5728\u50A8\u7269\u5BA4\u5BFB\u627E\u5907\u7528\u836F\u54C1\u65F6\u53D1\u73B0\u9690\u85CF\u8D44\u6599\u3002"
+  description_En: "Find hidden documents while looking for backup medication in the storage room."
+=======
   taskName: "调查储物室"
-  description_Zh: "任务11完成后，或主动进入储物室。在储物室指定位置生成"隐藏的金属盒"交互点。打开后获得"基因关联报告"。"
+  description_Zh: '任务11完成后，或主动进入储物室。在储物室指定位置生成"隐藏的金属盒"交互点。打开后获得"基因关联报告"。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 120001
   onStartActions:
   - rid: 120002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 120001
       type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "获得基因关联报告"
+        description: "\u83B7\u5F97\u57FA\u56E0\u5173\u8054\u62A5\u544A"
         itemID: Item_GeneReport
         amount: 1
     - rid: 120002

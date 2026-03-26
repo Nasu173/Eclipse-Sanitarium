@@ -6,6 +6,9 @@ public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance { get; private set; }
 
+    [Header("语言设置")]
+    [Tooltip("现在语言由GlobalLanguage统一管理，此变量已废弃但保留Header以兼容其他设置")]
+
     [Header("任务配置")]
     [SerializeField] private List<TaskData> taskDatabase = new List<TaskData>();
     
@@ -98,4 +101,9 @@ public class TaskManager : MonoBehaviour
     }
 
     public TaskData GetActiveTask() => activeTask;
+
+    public void OnLanguageChanged()
+    {
+        if (activeTask != null) OnTaskUpdated?.Invoke(activeTask);
+    }
 }

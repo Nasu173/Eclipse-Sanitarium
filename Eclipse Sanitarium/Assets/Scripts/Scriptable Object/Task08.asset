@@ -13,26 +13,33 @@ MonoBehaviour:
   m_Name: Task08
   m_EditorClassIdentifier: 
   taskId: Task_08_ReturnFabric_203
+<<<<<<< Updated upstream
+  taskName: "08.\u9012\u9001\u4E0E\u6D88\u5931"
+  taskName_En: "08. Delivery and Disappearance"
+  description_Zh: "\u5C06\u7EC7\u7269\u9001\u56DE203\u623F"
+  description_En: "Return the fabric to Room 203."
+=======
   taskName: "将织物送回203房"
-  description_Zh: "持有"湿润纤维织物"。玩家进入203房，自动播放"病人消失"过场，在床上生成"根茎"交互点（拾取后为任务物品）。"
+  description_Zh: '持有"湿润纤维织物"。玩家进入203房，自动播放"病人消失"过场，在床上生成"根茎"交互点（拾取后为任务物品）。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 80001
   onStartActions:
   - rid: 80002
   - rid: 80003
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 80001
       type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "拾取根茎"
+        description: "\u62FE\u53D6\u6839\u830E"
         itemID: Item_Rhizome
         amount: 1
     - rid: 80002

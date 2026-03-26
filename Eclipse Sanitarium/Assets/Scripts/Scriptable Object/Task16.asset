@@ -13,23 +13,30 @@ MonoBehaviour:
   m_Name: Task16
   m_EditorClassIdentifier: 
   taskId: Task_16_ReadVincentLog
+<<<<<<< Updated upstream
+  taskName: "16.\u6C34\u843D\u77F3\u51FA"
+  taskName_En: "16. The Truth Revealed"
+  description_Zh: "\u5728\u6863\u6848\u5BA4\u4E3B\u63A7\u53F0\u8BFB\u53D6\u5B8C\u6574\u65E5\u5FD7\u3002"
+  description_En: "Read the complete logs at the main console in the archive room."
+=======
   taskName: "阅读维兰德博士日志"
-  description_Zh: "与档案室主控台交互。打开阅读UI，显示完整日志文本。"
+  description_Zh: '与档案室主控台交互。打开阅读UI，显示完整日志文本。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 160001
   onStartActions: []
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
-  defaultNextTask: {fileID: 11400000, guid: c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4, type: 2}
+  defaultNextTask: {fileID: 11400000, guid: d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5, type: 2}
   references:
     version: 2
     RefIds:
     - rid: 160001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完整阅读维兰德博士日志"
+        description: "\u5B8C\u6574\u9605\u8BFB\u7EF4\u5170\u5FB7\u535A\u58EB\u65E5\u5FD7"
         dialogueID: Archive_VincentLog_FullRead
         mustBeFullyRead: 1

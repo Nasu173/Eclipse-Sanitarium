@@ -9,7 +9,9 @@ public class TaskData : ScriptableObject
     [Header("基础说明")]
     public string taskId;
     public string taskName;
+    public string taskName_En;
     [TextArea(3, 5)] public string description_Zh;
+    [TextArea(3, 5)] public string description_En;
 
     [Header("完成条件 (所有条件满足才算完成)")]
     [SerializeReference, SubclassSelector] public List<TaskCondition> completionConditions = new List<TaskCondition>();
@@ -54,4 +56,11 @@ public class TaskBranch
     public string branchName;
     public TaskData nextTask;
     [SerializeReference, SubclassSelector] public List<TaskAction> branchActions = new List<TaskAction>();
+}
+
+public enum TaskStatus
+{
+    NotStarted,
+    InProgress,
+    Completed
 }

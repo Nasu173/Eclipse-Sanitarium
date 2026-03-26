@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: Task07
   m_EditorClassIdentifier: 
   taskId: Task_07_FirstSecret
+<<<<<<< Updated upstream
+  taskName: "07.\u521D\u6B21\u7AA5\u79D8"
+  taskName_En: "07. First Secret"
+  description_Zh: "\u63A2\u7D22\u4E09\u697C\u8D70\u5ECA\uFF0C\u5E76\u83B7\u53D6\u201C\u6E7F\u6DA6\u7684\u7EA4\u7EF4\u7EC7\u7269\u201D\u3002"
+  description_En: "Explore the third-floor corridor and obtain the \"Moist Fiber Fabric\"."
+=======
   taskName: "探索三楼走廊"
-  description_Zh: "在三楼走廊生成“湿润纤维织物”交互点。玩家拾取后，标记任务完成。"
+  description_Zh: '在三楼走廊生成“湿润纤维织物”交互点。玩家拾取后，标记任务完成。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 70001
   onStartActions:
   - rid: 70002
   onCompleteActions: []
-  status: 0
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -31,7 +38,7 @@ MonoBehaviour:
     - rid: 70001
       type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "拾取湿润纤维织物"
+        description: "\u62FE\u53D6\u6E7F\u6DA6\u7EA4\u7EF4\u7EC7\u7269"
         itemID: Item_MoistFiber
         amount: 1
     - rid: 70002

@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: Task01
   m_EditorClassIdentifier: 
   taskId: Task_01_CheckIn
+<<<<<<< Updated upstream
+  taskName: "01.\u591C\u95F4\u62A5\u5230"
+  taskName_En: "01. Night Shift Check-in"
+  description_Zh: "\u4E0E\u963F\u7433\u4EA4\u63A5\u3002"
+  description_En: "Handover with Arin."
+=======
   taskName: "夜间报到"
-  description_Zh: "游戏开始，与阿琳交接。"
+  description_Zh: '游戏开始，与阿琳交接。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 10001
   onStartActions:
   - rid: 10002
   - rid: 10003
   onCompleteActions: []
-  status: 0
+  status: 1
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -32,7 +39,7 @@ MonoBehaviour:
     - rid: 10001
       type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
       data:
-        description: "完成阿琳的交接对话"
+        description: "\u5B8C\u6210\u963F\u7433\u7684\u4EA4\u63A5\u5BF9\u8BDD"
         dialogueID: Nurse_Arin_Handover
         mustBeFullyRead: 1
     - rid: 10002
