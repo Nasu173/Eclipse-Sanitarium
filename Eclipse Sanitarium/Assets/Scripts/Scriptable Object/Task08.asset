@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task08
   m_EditorClassIdentifier: 
   taskId: Task_08_ReturnFabric_203
-<<<<<<< Updated upstream
-  taskName: "08.\u9012\u9001\u4E0E\u6D88\u5931"
+  taskName: "08.将织物送回203房"
   taskName_En: "08. Delivery and Disappearance"
-  description_Zh: "\u5C06\u7EC7\u7269\u9001\u56DE203\u623F"
-  description_En: "Return the fabric to Room 203."
-=======
-  taskName: "将织物送回203房"
   description_Zh: '持有"湿润纤维织物"。玩家进入203房，自动播放"病人消失"过场，在床上生成"根茎"交互点（拾取后为任务物品）。'
->>>>>>> Stashed changes
+  description_En: "Return the fabric to Room 203."
   completionConditions:
   - rid: 80001
   onStartActions:

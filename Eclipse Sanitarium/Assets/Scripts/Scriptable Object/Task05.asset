@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task05
   m_EditorClassIdentifier: 
   taskId: Task_05_RespondCall_203
-<<<<<<< Updated upstream
-  taskName: "05.\u54CD\u5E94\u547C\u53EB"
-  taskName_En: 05. Respond to Call
-  description_Zh: "\u54CD\u5E94203\u623F \u5217\u592B\xB7\u53F6\u83F2\u83AB\u592B\u7684\u7D27\u6025\u547C\u53EB\u94C3\u3002"
-  description_En: Respond to the emergency call bell from Lev Yefimov in Room 203.
-=======
   taskName: "响应203房呼叫"
+  taskName_En: 05. Respond to Call
   description_Zh: '203房呼叫铃响起，地图标记。玩家进入203房范围，触发与李明阳的对话。'
->>>>>>> Stashed changes
+  description_En: Respond to the emergency call bell from Lev Yefimov in Room 203.
   completionConditions:
   - rid: 50001
   onStartActions:

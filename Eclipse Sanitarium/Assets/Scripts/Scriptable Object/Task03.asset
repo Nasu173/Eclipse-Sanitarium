@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task03
   m_EditorClassIdentifier: 
   taskId: Task_03_FirstMeds_201
-<<<<<<< Updated upstream
-  taskName: "03.\u9996\u6B21\u9001\u836F"
+  taskName: "03.为201房送药"
   taskName_En: "03. First Medication"
-  description_Zh: "\u4E3A201\u623F\u7684\u9648\u58A8\u9001\u53BB\u591C\u95F4\u836F\u7269\u3002"
-  description_En: "Deliver night medication to Chen Mo in Room 201."
-=======
-  taskName: "为201房送药"
   description_Zh: '在201房生成“药瓶”交互点。玩家交互后，播放放药动画，标记任务完成。'
->>>>>>> Stashed changes
+  description_En: "Deliver night medication to Chen Mo in Room 201."
   completionConditions:
   - rid: 30001
   onStartActions:

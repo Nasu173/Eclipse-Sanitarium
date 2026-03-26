@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task16
   m_EditorClassIdentifier: 
   taskId: Task_16_ReadVincentLog
-<<<<<<< Updated upstream
-  taskName: "16.\u6C34\u843D\u77F3\u51FA"
+  taskName: "16.阅读维兰德博士日志"
   taskName_En: "16. The Truth Revealed"
-  description_Zh: "\u5728\u6863\u6848\u5BA4\u4E3B\u63A7\u53F0\u8BFB\u53D6\u5B8C\u6574\u65E5\u5FD7\u3002"
-  description_En: "Read the complete logs at the main console in the archive room."
-=======
-  taskName: "阅读维兰德博士日志"
   description_Zh: '与档案室主控台交互。打开阅读UI，显示完整日志文本。'
->>>>>>> Stashed changes
+  description_En: "Read the complete logs at the main console in the archive room."
   completionConditions:
   - rid: 160001
   onStartActions: []

@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task12
   m_EditorClassIdentifier: 
   taskId: Task_12_InvestigateStorage
-<<<<<<< Updated upstream
-  taskName: "12.\u50A8\u7269\u5BA4\u7684\u79D8\u5BC6"
+  taskName: "12.调查储物室"
   taskName_En: "12. Storage Room Secret"
-  description_Zh: "\u5728\u50A8\u7269\u5BA4\u5BFB\u627E\u5907\u7528\u836F\u54C1\u65F6\u53D1\u73B0\u9690\u85CF\u8D44\u6599\u3002"
-  description_En: "Find hidden documents while looking for backup medication in the storage room."
-=======
-  taskName: "调查储物室"
   description_Zh: '任务11完成后，或主动进入储物室。在储物室指定位置生成"隐藏的金属盒"交互点。打开后获得"基因关联报告"。'
->>>>>>> Stashed changes
+  description_En: "Find hidden documents while looking for backup medication in the storage room."
   completionConditions:
   - rid: 120001
   onStartActions:

@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task10
   m_EditorClassIdentifier: 
   taskId: Task_10_OrganizeLibrary
-<<<<<<< Updated upstream
-  taskName: "10.\u5C18\u5C01\u8BB0\u5F55"
+  taskName: "10.整理图书馆资料"
   taskName_En: "10. Dusty Records"
-  description_Zh: "\u5728\u56FE\u4E66\u9986\u201C\u6574\u7406\u8D44\u6599\u201D\u3002"
-  description_En: "Organize files in the library."
-=======
-  taskName: "整理图书馆资料"
   description_Zh: '持有"图书馆钥匙"并进入图书馆。在指定档案柜生成"初期观察记录"交互点。玩家阅读后，标记任务完成。'
->>>>>>> Stashed changes
+  description_En: "Organize files in the library."
   completionConditions:
   - rid: 100001
   onStartActions:

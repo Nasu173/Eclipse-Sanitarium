@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: Task09
   m_EditorClassIdentifier: 
   taskId: Task_09_ReportToHeadNurse
-<<<<<<< Updated upstream
-  taskName: "09.\u62A5\u544A\u4E0E\u652F\u5F00"
+  taskName: "09.向护士长报告"
   taskName_En: "09. Report and Dismissal"
-  description_Zh: "\u5411\u62A4\u58EB\u957F\u62A5\u544A203\u623F\u7684\u5931\u8E2A\u4E8B\u4EF6"
-  description_En: "Report the disappearance in Room 203 to the Head Nurse."
-=======
-  taskName: "向护士长报告"
   description_Zh: '进入护士长办公室范围。触发与护士长的固定对话。对话结束后，获得"图书馆钥匙"，标记任务完成。'
->>>>>>> Stashed changes
+  description_En: "Report the disappearance in Room 203 to the Head Nurse."
   completionConditions:
   - rid: 90001
   onStartActions: []
