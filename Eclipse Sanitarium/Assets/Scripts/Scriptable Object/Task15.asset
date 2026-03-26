@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: Task15
   m_EditorClassIdentifier: 
   taskId: Task_15_InfiltrateArchive
+<<<<<<< Updated upstream
   taskName: "15.\u6863\u6848\u5BA4\u5165\u4FB5"
   taskName_En: "15. Archive Infiltration"
   description_Zh: "\u6F5C\u5165\u7EDD\u5BC6\u6863\u6848\u5BA4\u83B7\u53D6\u6838\u5FC3\u8BC1\u636E\u3002"
   description_En: "Infiltrate the highly confidential archive room to obtain core evidence."
+=======
+  taskName: "潜入绝密档案室"
+  description_Zh: '持有"举报信"，并找到"维修钥匙卡"。使用钥匙卡打开档案室门。进入后，解锁室内所有电脑和监控的交互。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 150001
   - rid: 150002

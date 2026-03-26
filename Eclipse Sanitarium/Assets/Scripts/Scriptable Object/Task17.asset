@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: Task17
   m_EditorClassIdentifier: 
   taskId: Task_17_CheckExternalCamera
+<<<<<<< Updated upstream
   taskName: "17.\u5F7C\u65F6\u5F7C\u523B"
   taskName_En: "17. Meanwhile"
   description_Zh: "\u5207\u6362\u76D1\u63A7\u5C4F\u5E55\u81F3\u7597\u517B\u9662\u5916\u90E8\u3002"
   description_En: "Switch the monitoring screen to the outside of the sanitarium."
+=======
+  taskName: "查看外部监控"
+  description_Zh: '与档案室监控墙交互。切换监控画面至外部隔离区，播放一段循环的恐怖影像。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 170001
   onStartActions: []

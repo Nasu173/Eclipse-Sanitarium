@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: Task11
   m_EditorClassIdentifier: 
   taskId: Task_11_SecondMeds_201
+<<<<<<< Updated upstream
   taskName: "11.\u4E8C\u6B21\u9001\u836F"
   taskName_En: "11. Second Medication"
   description_Zh: "\u518D\u6B21\u4E3A201\u623F\u7684\u4F0A\u6208\u5C14\xB7\u5F7C\u5F97\u7F57\u592B\u9001\u836F\u3002"
   description_En: "Deliver medication again to Igor Petrov in Room 201."
+=======
+  taskName: "再次为201房送药"
+  description_Zh: '任务10完成。在201房生成新的"药瓶"交互点。玩家互动后，播放异化更明显的过场，并解锁床下"观测笔记"交互点。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 110001
   onStartActions:

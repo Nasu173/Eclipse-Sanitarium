@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: Task18
   m_EditorClassIdentifier: 
   taskId: Task_18_DiscoverMedRecord
+<<<<<<< Updated upstream
   taskName: "18.\u60A3\u8005\u75C5\u5386"
   taskName_En: "18. Patient Medical Record"
   description_Zh: "\u5728\u6863\u6848\u5BA4\u627E\u5230\u201C\u5F53\u524D\u5165\u9662\u8005\u540D\u5355\u201D"
   description_En: "Find the \"Current Admission List\" in the archive room."
+=======
+  taskName: "发现患者病历"
+  description_Zh: '与档案室"入院者名单"文件交互。在名单中找到并点击玩家角色名，打开"玩家病历"UI，显示诊断信息。随后，门自动上锁。'
+>>>>>>> Stashed changes
   completionConditions:
   - rid: 180001
   onStartActions: []
