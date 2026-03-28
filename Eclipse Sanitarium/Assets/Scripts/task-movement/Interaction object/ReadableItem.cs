@@ -1,49 +1,62 @@
 using UnityEngine;
 
-// ¼Ì³Ğ MonoBehaviour£¬²¢ÊµÏÖ IInteractable ½Ó¿Ú
+// ç»§æ‰¿ MonoBehaviourï¼Œå¹¶å®ç° IInteractable æ¥å£
 public class ReadableItem : MonoBehaviour, IInteractable
 {
-    [Header("ÎÄµµÄÚÈİÅäÖÃ")]
-    public string documentTitle = "Î´ÖªÎÄ¼ş";
+    [Header("æ–‡æ¡£å†…å®¹é…ç½®")]
+    public string documentTitle = "æœªçŸ¥æ–‡ä»¶";
+    public string documentTitle_En = "Unknown Document";
 
-    // [TextArea] ÊÇ¸ö·Ç³£ÊµÓÃµÄ±êÇ©£¡
-    // Ëü»áÔÚ Unity Ãæ°åÀïÉú³ÉÒ»¸ö¶àĞĞ´óÎÄ±¾¿ò£¬·½±ã²ß»®ÌîÈë³¤ÆªµÄ¡°¹Û²â±Ê¼Ç¡±»ò¡°ÈÕ¼Ç¡±
+    // [TextArea] æ˜¯ä¸ªéå¸¸å®ç”¨çš„æ ‡ç­¾ï¼
+    // å®ƒä¼šåœ¨ Unity é¢æ¿é‡Œç”Ÿæˆä¸€ä¸ªå¤šè¡Œå¤§æ–‡æœ¬æ¡†ï¼Œæ–¹ä¾¿ç­–åˆ’å¡«å…¥é•¿ç¯‡çš„â€œè§‚æµ‹ç¬”è®°â€æˆ–â€œæ—¥è®°â€
     [TextArea(5, 10)]
-    public string documentContent = "ÕâÀïÊÇÎÄµµµÄÕıÎÄÄÚÈİ...";
+    public string documentContent = "è¿™é‡Œæ˜¯æ–‡æ¡£çš„æ­£æ–‡å†…å®¹...";
+    [TextArea(5, 10)]
+    public string documentContent_En = "Document content...";
 
-    [Header("ÏµÍ³ÉèÖÃ")]
-    // ¶ÔÓ¦±í¸ñÀïµÄ¡°ÔÄ¶ÁÍê³Éºó×Ô¶¯¼ÇÂ¼µ½ÎÄµµ¼¯UI¡±
+    [Header("ç³»ç»Ÿè®¾ç½®")]
+    // å¯¹åº”è¡¨æ ¼é‡Œçš„â€œé˜…è¯»å®Œæˆåè‡ªåŠ¨è®°å½•åˆ°æ–‡æ¡£é›†UIâ€
     public bool isRecordable = true;
 
-    // --- ÒÔÏÂÊÇ±ØĞëÊµÏÖµÄ½Ó¿Ú·½·¨ ---
+    // --- ä»¥ä¸‹æ˜¯å¿…é¡»å®ç°çš„æ¥å£æ–¹æ³• ---
 
     public string GetInteractPrompt()
     {
-        // Íæ¼Ò×¼ĞÄ¶Ô×¼Ê±£¬ÆÁÄ»»áÏÔÊ¾ "[E] ÔÄ¶Á »ìÂÒµÄ¹Û²â±Ê¼Ç"
-        return "ÔÄ¶Á " + documentTitle;
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            return "Read " + documentTitle_En;
+        }
+        return "é˜…è¯» " + documentTitle;
     }
 
     public void OnInteract()
     {
-        // µ±Íæ¼Ò°´ÏÂ E ¼üÊ±´¥·¢
-        // ¡¾µÚÒ»²½¡¿ÔİÍ£Íæ¼ÒµÄÒÆ¶¯ºÍÊÓ½Ç×ª¶¯£¨Í¨³£¿Ö²ÀÓÎÏ·ÔÄ¶ÁÊ±²»ÄÜÂÒÅÜ£©
+        // å½“ç©å®¶æŒ‰ä¸‹ E é”®æ—¶è§¦å‘
+        // ã€ç¬¬ä¸€æ­¥ã€‘æš‚åœç©å®¶çš„ç§»åŠ¨å’Œè§†è§’è½¬åŠ¨ï¼ˆé€šå¸¸ææ€–æ¸¸æˆé˜…è¯»æ—¶ä¸èƒ½ä¹±è·‘ï¼‰
 
-        // ¡¾µÚ¶ş²½¡¿ºô³öÔÄ¶Á½çÃæµÄ UI Ãæ°å£¬²¢°ÑÎÄ×Ö´«½øÈ¥
-        // ¼«¼ò£¡Ö±½Ó°Ñµ±Ç°ÎïÆ·ÅäºÃµÄ±êÌâºÍÕıÎÄÈÓ¸øµ¥Àı¹ÜÀíÆ÷
-        DocumentUIManager.Instance.ShowDocument(documentTitle, documentContent);
+        // ã€ç¬¬äºŒæ­¥ã€‘å‘¼å‡ºé˜…è¯»ç•Œé¢çš„ UI é¢æ¿ï¼Œå¹¶æŠŠæ–‡å­—ä¼ è¿›å»
+        // æç®€ï¼ç›´æ¥æŠŠå½“å‰ç‰©å“é…å¥½çš„æ ‡é¢˜å’Œæ­£æ–‡æ‰”ç»™å•ä¾‹ç®¡ç†å™¨
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            DocumentUIManager.Instance.ShowDocument(documentTitle_En, documentContent_En);
+        }
+        else
+        {
+            DocumentUIManager.Instance.ShowDocument(documentTitle, documentContent);
+        }
 
-        // ¡¾µÚÈı²½¡¿Èç¹û¹´Ñ¡ÁË¼ÇÂ¼£¬¾Í°ÑËüÈÓ½øÍæ¼ÒµÄµµ°¸¼¯Àï
+        // ã€ç¬¬ä¸‰æ­¥ã€‘å¦‚æœå‹¾é€‰äº†è®°å½•ï¼Œå°±æŠŠå®ƒæ‰”è¿›ç©å®¶çš„æ¡£æ¡ˆé›†é‡Œ
         if (isRecordable)
         {
-            Debug.Log($"ÒÑ½«¡¶{documentTitle}¡·ÓÀ¾Ã¼ÇÂ¼µ½Íæ¼ÒµÄµµ°¸¿âÖĞ£¡");
+            Debug.Log($"å·²å°†ã€Š{documentTitle}ã€‹æ°¸ä¹…è®°å½•åˆ°ç©å®¶çš„æ¡£æ¡ˆåº“ä¸­ï¼");
         }
     }
 
     public void ToggleHighlight(bool isHighlighted)
     {
-        // ÕâÀïµÄÂß¼­ºÍÄãÖ®Ç°Ğ´µÄ TestItem Ò»Ñù
-        // Èç¹ûÄãÃÇÏîÄ¿ºóĞøÓÃÁËÃè±ß²å¼ş£¨Outline£©£¬¾Í»ñÈ¡ Outline ×é¼ş²¢¿ª¹ØËü
-        // Ä¿Ç°ÎªÁË²âÊÔ£¬ÎÒÃÇ¿ÉÒÔÏÈÁô¿Õ£¬»òÕß¼òµ¥±äÉ«
+        // è¿™é‡Œçš„é€»è¾‘å’Œä½ ä¹‹å‰å†™çš„ TestItem ä¸€æ ·
+        // å¦‚æœä½ ä»¬é¡¹ç›®åç»­ç”¨äº†æè¾¹æ’ä»¶ï¼ˆOutlineï¼‰ï¼Œå°±è·å– Outline ç»„ä»¶å¹¶å¼€å…³å®ƒ
+        // ç›®å‰ä¸ºäº†æµ‹è¯•ï¼Œæˆ‘ä»¬å¯ä»¥å…ˆç•™ç©ºï¼Œæˆ–è€…ç®€å•å˜è‰²
         if (TryGetComponent<Renderer>(out Renderer r))
         {
             r.material.color = isHighlighted ? Color.yellow : Color.white;

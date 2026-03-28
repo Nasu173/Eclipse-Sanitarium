@@ -1,31 +1,36 @@
 using UnityEngine;
-using UnityEngine.Events; // ¡¾ºËĞÄ¡¿±ØĞëÒıÈëÕâ¸öÃüÃû¿Õ¼ä²ÅÄÜÓÃ UnityEvent
+using UnityEngine.Events; // ã€æ ¸å¿ƒã€‘å¿…é¡»å¼•å…¥è¿™ä¸ªå‘½åç©ºé—´æ‰èƒ½ç”¨ UnityEvent
 
 public class MechanismItem : MonoBehaviour, IInteractable
 {
-    [Header("½»»¥ÌáÊ¾")]
-    public string interactPrompt = "²Ù×÷ ¿ØÖÆÌ¨";
+    [Header("äº¤äº’æç¤º")]
+    public string interactPrompt = "æ“ä½œ æ§åˆ¶å°";
+    public string interactPrompt_En = "Interact";
 
-    [Header("»ú¹ØÉèÖÃ")]
-    // ºÜ¶à½âÃÜ»ú¹Ø£¨±ÈÈç¿ªËø£©ÊÇÒ»´ÎĞÔµÄ£¬¹´Ñ¡ºóÓÃ¹ıÒ»´Î¾Í²»ÄÜÔÙ°´ÁË
+    [Header("æœºå…³è®¾ç½®")]
+    // å¾ˆå¤šè§£å¯†æœºå…³ï¼ˆæ¯”å¦‚å¼€é”ï¼‰æ˜¯ä¸€æ¬¡æ€§çš„ï¼Œå‹¾é€‰åç”¨è¿‡ä¸€æ¬¡å°±ä¸èƒ½å†æŒ‰äº†
     public bool isOneTimeUse = false;
     private bool _hasBeenUsed = false;
 
-    [Header("´¥·¢ÊÂ¼ş")]
-    // ÕâÀïµÄ UnityEvent »áÔÚ±à¼­Æ÷Ãæ°åÀï±ä³ÉÒ»¸ö¿ÉÒÔÎŞÏŞÌí¼ÓÁĞ±íµÄ UI ²ÛÎ»
+    [Header("è§¦å‘äº‹ä»¶")]
+    // è¿™é‡Œçš„ UnityEvent ä¼šåœ¨ç¼–è¾‘å™¨é¢æ¿é‡Œå˜æˆä¸€ä¸ªå¯ä»¥æ— é™æ·»åŠ åˆ—è¡¨çš„ UI æ§½ä½
     public UnityEvent onInteractEvent;
 
     public string GetInteractPrompt()
     {
-        // Èç¹ûÊÇÒ»´ÎĞÔ»ú¹ØÇÒÒÑ¾­ÓÃ¹ı£¬¾Í²»ÔÙÏÔÊ¾ÌáÊ¾
+        // å¦‚æœæ˜¯ä¸€æ¬¡æ€§æœºå…³ä¸”å·²ç»ç”¨è¿‡ï¼Œå°±ä¸å†æ˜¾ç¤ºæç¤º
         if (isOneTimeUse && _hasBeenUsed) return "";
 
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            return interactPrompt_En;
+        }
         return interactPrompt;
     }
 
     public void OnInteract()
     {
-        // ·ÀÓùÂß¼­£ºÓÃ¹ıµÄÒ»´ÎĞÔ»ú¹ØÖ±½ÓÀ¹½Ø
+        // é˜²å¾¡é€»è¾‘ï¼šç”¨è¿‡çš„ä¸€æ¬¡æ€§æœºå…³ç›´æ¥æ‹¦æˆª
         if (isOneTimeUse && _hasBeenUsed) return;
 
         if (isOneTimeUse)
@@ -33,21 +38,21 @@ public class MechanismItem : MonoBehaviour, IInteractable
             _hasBeenUsed = true;
         }
 
-        // ¡¾ºËĞÄ¡¿ºô½ĞËùÓĞÔÚ Inspector Ãæ°åÀïÁ¬ÏßµÄº¯Êı
-        // "?" ÊÇ C# µÄ°²È«µ÷ÓÃ£¬ÒâË¼ÊÇÈç¹ûÀïÃæÃ»Á¬Ïß£¬¾ÍÊ²Ã´¶¼²»×ö£¬·ÀÖ¹±¨´í
+        // ã€æ ¸å¿ƒã€‘å‘¼å«æ‰€æœ‰åœ¨ Inspector é¢æ¿é‡Œè¿çº¿çš„å‡½æ•°
+        // "?" æ˜¯ C# çš„å®‰å…¨è°ƒç”¨ï¼Œæ„æ€æ˜¯å¦‚æœé‡Œé¢æ²¡è¿çº¿ï¼Œå°±ä»€ä¹ˆéƒ½ä¸åšï¼Œé˜²æ­¢æŠ¥é”™
         onInteractEvent?.Invoke();
     }
 
     public void ToggleHighlight(bool isHighlighted)
     {
-        // Èç¹ûÓÃ¹ıÁË£¬¾Í²»ÔÙ¸ßÁÁ
+        // å¦‚æœç”¨è¿‡äº†ï¼Œå°±ä¸å†é«˜äº®
         if (isOneTimeUse && _hasBeenUsed)
         {
             if (TryGetComponent<Renderer>(out Renderer r)) r.material.color = Color.white;
             return;
         }
 
-        // »ù´¡±äÉ«²âÊÔ
+        // åŸºç¡€å˜è‰²æµ‹è¯•
         if (TryGetComponent<Renderer>(out Renderer renderer))
         {
             renderer.material.color = isHighlighted ? Color.yellow : Color.white;

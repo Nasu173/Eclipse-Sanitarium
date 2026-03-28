@@ -1,11 +1,12 @@
 using UnityEngine;
 
-// ×¢ÒâÕâÀï£º¼Ì³Ğ MonoBehaviour µÄÍ¬Ê±£¬ÊµÏÖ IInteractable ½Ó¿Ú
+// æ³¨æ„è¿™é‡Œï¼šç»§æ‰¿ MonoBehaviour çš„åŒæ—¶ï¼Œå®ç° IInteractable æ¥å£
 public class TestItem : MonoBehaviour, IInteractable
 {
-    public string itemName = "ÉúĞâµÄÔ¿³×";
+    public string itemName = "ç”Ÿé”ˆçš„é’¥åŒ™";
+    public string itemName_En = "Test Item";
 
-    // ÓÃÓÚÑİÊ¾¸ßÁÁµÄ²ÄÖÊÌæ»»£¨ÕıÊ½ÏîÄ¿Í¨³£ÓÃ Outline Shader£¬ÕâÀïÓÃ±äÉ«´úÌæ£©
+    // ç”¨äºæ¼”ç¤ºé«˜äº®çš„æè´¨æ›¿æ¢ï¼ˆæ­£å¼é¡¹ç›®é€šå¸¸ç”¨ Outline Shaderï¼Œè¿™é‡Œç”¨å˜è‰²ä»£æ›¿ï¼‰
     private Renderer _renderer;
     private Color _originalColor;
 
@@ -15,32 +16,36 @@ public class TestItem : MonoBehaviour, IInteractable
         _originalColor = _renderer.material.color;
     }
 
-    // ÊµÏÖ½Ó¿Ú£º·µ»Ø UI ÌáÊ¾
+    // å®ç°æ¥å£ï¼šè¿”å› UI æç¤º
     public string GetInteractPrompt()
     {
-        return "Ê°È¡ " + itemName;
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            return "Pick up " + itemName_En;
+        }
+        return "æ‹¾å– " + itemName;
     }
 
-    // ÊµÏÖ½Ó¿Ú£º°´ÏÂ E ¼üµÄÂß¼­
+    // å®ç°æ¥å£ï¼šæŒ‰ä¸‹ E é”®çš„é€»è¾‘
     public void OnInteract()
     {
-        Debug.Log("Äã¼ñÆğÁË£º" + itemName);
-        // Êµ¼Ê¿ª·¢ÖĞÕâÀï»áµ÷ÓÃ Backpack.AddItem(this)
-        // È»ºóÏú»Ù³¡¾°ÖĞµÄÕâ¸öÎïÌå
+        Debug.Log("ä½ æ¡èµ·äº†ï¼š" + itemName);
+        // å®é™…å¼€å‘ä¸­è¿™é‡Œä¼šè°ƒç”¨ Backpack.AddItem(this)
+        // ç„¶åé”€æ¯åœºæ™¯ä¸­çš„è¿™ä¸ªç‰©ä½“
         Destroy(gameObject);
     }
 
-    // ÊµÏÖ½Ó¿Ú£º¸ßÁÁÂß¼­
+    // å®ç°æ¥å£ï¼šé«˜äº®é€»è¾‘
     public void ToggleHighlight(bool isHighlighted)
     {
         if (isHighlighted)
         {
-            // ÊÓÏßÉ¨¹ıÊ±±ä³É»ÆÉ«
+            // è§†çº¿æ‰«è¿‡æ—¶å˜æˆé»„è‰²
             _renderer.material.color = Color.yellow;
         }
         else
         {
-            // ÊÓÏßÒÆ¿ªÊ±»Ö¸´Ô­É«
+            // è§†çº¿ç§»å¼€æ—¶æ¢å¤åŸè‰²
             _renderer.material.color = _originalColor;
         }
     }

@@ -1,20 +1,21 @@
 using UnityEngine;
 using TMPro;
-using System.Collections; // ¡¾ĞÂÔö¡¿ÒıÈëĞ­³ÌĞèÒªµÄÃüÃû¿Õ¼ä
+using System.Collections; // ã€æ–°å¢ã€‘å¼•å…¥åç¨‹éœ€è¦çš„å‘½åç©ºé—´
 
 public class DocumentUIManager : MonoBehaviour
 {
     public static DocumentUIManager Instance { get; private set; }
 
-    [Header("UI ×é¼şÒıÓÃ")]
+    [Header("UI ç»„ä»¶å¼•ç”¨")]
     public GameObject documentPanel;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI contentText;
+    public TextMeshProUGUI exitPromptText;
 
-    [Header("Íæ¼Ò¿ØÖÆÒıÓÃ")]
+    [Header("ç©å®¶æ§åˆ¶å¼•ç”¨")]
     public MonoBehaviour playerMovement;
     public MonoBehaviour playerLook;
-    // ¡¾ĞÂÔö¡¿°ÑÎÒÃÇµÄ½»»¥É¨ÃèÒÇÒ²ÍÏ½øÀ´¹ÜÏ½
+    // ã€æ–°å¢ã€‘æŠŠæˆ‘ä»¬çš„äº¤äº’æ‰«æä»ªä¹Ÿæ‹–è¿›æ¥ç®¡è¾–
     public PlayerInteractor playerInteractor;
 
     private bool _isReading = false;
@@ -29,7 +30,7 @@ public class DocumentUIManager : MonoBehaviour
 
     void Update()
     {
-        // Ö»ÓĞÔÚÔÄ¶Á×´Ì¬ÏÂ£¬²Å¼ì²â¹Ø±Õ°´¼ü
+        // åªæœ‰åœ¨é˜…è¯»çŠ¶æ€ä¸‹ï¼Œæ‰æ£€æµ‹å…³é—­æŒ‰é”®
         if (_isReading && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)))
         {
             CloseDocument();
@@ -38,17 +39,29 @@ public class DocumentUIManager : MonoBehaviour
 
     public void ShowDocument(string title, string content)
     {
+        if (exitPromptText != null)
+        {
+            if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+            {
+                exitPromptText.text = "Press E / Esc to Exit";
+            }
+            else
+            {
+                exitPromptText.text = "æŒ‰ E / Esc é€€å‡º";
+            }
+        }
+
         titleText.text = title;
         contentText.text = content;
 
         documentPanel.SetActive(true);
         _isReading = true;
 
-        // ¶³½áÒÆ¶¯¡¢×ªÍ·£¬ÒÔ¼°¡¾ĞÂÔöµÄ½»»¥ÉäÏß¡¿
+        // å†»ç»“ç§»åŠ¨ã€è½¬å¤´ï¼Œä»¥åŠã€æ–°å¢çš„äº¤äº’å°„çº¿ã€‘
         if (playerMovement != null) playerMovement.enabled = false;
         if (playerLook != null) playerLook.enabled = false;
 
-        // Ç¿ÖÆÉ¨ÃèÒÇĞİÃß£¬"[E] ÌáÊ¾" »áÔÚÕâÀï×Ô¶¯ÏûÊ§
+        // å¼ºåˆ¶æ‰«æä»ªä¼‘çœ ï¼Œ"[E] æç¤º" ä¼šåœ¨è¿™é‡Œè‡ªåŠ¨æ¶ˆå¤±
         if (playerInteractor != null) playerInteractor.SetInteractorActive(false);
     }
 
@@ -57,19 +70,19 @@ public class DocumentUIManager : MonoBehaviour
         documentPanel.SetActive(false);
         _isReading = false;
 
-        // »Ö¸´ÒÆ¶¯ºÍ×ªÍ·
+        // æ¢å¤ç§»åŠ¨å’Œè½¬å¤´
         if (playerMovement != null) playerMovement.enabled = true;
         if (playerLook != null) playerLook.enabled = true;
 
-        // ¡¾ºËĞÄĞŞ¸´¡¿¿ªÆôÒ»¸öĞ­³Ì£¬µÈµ±Ç°ÕâÒ»Ö¡³¹µ×ÅÜÍê£¬ÔÙ»Ö¸´½»»¥É¨ÃèÒÇ
-        // ÕâÑù¾ÍÍêÃÀ±Ü¿ªÁËÕâÒ»Ö¡Àï°´ÏÂµÄ E ¼ü£¡
+        // ã€æ ¸å¿ƒä¿®å¤ã€‘å¼€å¯ä¸€ä¸ªåç¨‹ï¼Œç­‰å½“å‰è¿™ä¸€å¸§å½»åº•è·‘å®Œï¼Œå†æ¢å¤äº¤äº’æ‰«æä»ª
+        // è¿™æ ·å°±å®Œç¾é¿å¼€äº†è¿™ä¸€å¸§é‡ŒæŒ‰ä¸‹çš„ E é”®ï¼
         StartCoroutine(EnableInteractorNextFrame());
     }
 
-    // Ğ­³Ì£ºµÈ´ıÒ»Ö¡
+    // åç¨‹ï¼šç­‰å¾…ä¸€å¸§
     private IEnumerator EnableInteractorNextFrame()
     {
-        // yield return null µÄÒâË¼ÊÇ£ºÔÚ´ËÔİÍ££¬Ö±µ½ÏÂÒ»Ö¡ÔÙ¼ÌĞøÍùÏÂÖ´ĞĞ
+        // yield return null çš„æ„æ€æ˜¯ï¼šåœ¨æ­¤æš‚åœï¼Œç›´åˆ°ä¸‹ä¸€å¸§å†ç»§ç»­å¾€ä¸‹æ‰§è¡Œ
         yield return null;
 
         if (playerInteractor != null)

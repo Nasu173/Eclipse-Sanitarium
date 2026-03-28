@@ -12,6 +12,8 @@ public class NPCComponent : MonoBehaviour, IInteractable
 
     [Tooltip("NPC显示名称")]
     public string npcDisplayName;
+    [Tooltip("NPC英文显示名")]
+    public string npcDisplayName_En;
 
     [Tooltip("NPC类型")]
     public NPCType npcType = NPCType.Patient;
@@ -35,6 +37,8 @@ public class NPCComponent : MonoBehaviour, IInteractable
     [Header("交互设置")]
     [Tooltip("交互提示文本")]
     public string interactionPrompt = "对话";
+    [Tooltip("英文交互提示词")]
+    public string interactionPrompt_En = "Talk to";
 
     [Tooltip("高亮组件（可选）")]
     public Outline outlineComponent;
@@ -132,6 +136,10 @@ public class NPCComponent : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            return $"{interactionPrompt_En} {npcDisplayName_En}";
+        }
         return $"{interactionPrompt} {npcDisplayName}";
     }
 
