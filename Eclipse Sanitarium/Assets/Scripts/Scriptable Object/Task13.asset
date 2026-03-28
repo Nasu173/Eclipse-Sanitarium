@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task13
+  m_EditorClassIdentifier: 
+  taskId: Task_13_MoonlightBath_Deep
+  taskName: "13.深入月光浴室"
+  taskName_En: "13. Forbidden Depths"
+  description_Zh: '持有"基因关联报告"后，再次前往三楼。月光浴室门解锁。进入后播放过场动画，解锁控制台"监控日志"交互点。阅读后，触发护士长警告语音。'
+  description_En: "Use the found clues to try to enter the Moonlight Bath area."
+  completionConditions:
+  - rid: 130001
+  onStartActions:
+  - rid: 130002
+  - rid: 130003
+  onCompleteActions:
+  - rid: 130004
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 130001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u9605\u8BFB\u76D1\u63A7\u65E5\u5FD7\u540E\u89E6\u53D1"
+        dialogueID: MoonlightBath_MonitorLog_Read
+        mustBeFullyRead: 1
+    - rid: 130002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Unlock_MoonlightBath_Door
+    - rid: 130003
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Play_MoonlightBath_Entry_Cutscene
+    - rid: 130004
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Play_HeadNurse_Warning_Voice

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task01
+  m_EditorClassIdentifier: 
+  taskId: Task_01_CheckIn
+  taskName: "01.夜间报到"
+  taskName_En: "01. Night Shift Check-in"
+  description_Zh: "游戏开始，与阿琳交接。"
+  description_En: "Handover with Arin."
+  completionConditions:
+  - rid: 10001
+  onStartActions:
+  - rid: 10002
+  - rid: 10003
+  onCompleteActions: []
+  status: 1
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: 9b4a1c5d6e7f8a9b0c1d2e3f4a5b6c7d, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 10001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u5B8C\u6210\u963F\u7433\u7684\u4EA4\u63A5\u5BF9\u8BDD"
+        dialogueID: Nurse_Arin_Handover
+        mustBeFullyRead: 1
+    - rid: 10002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Play_Opening_Cutscene
+    - rid: 10003
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Unlock_Player_Control

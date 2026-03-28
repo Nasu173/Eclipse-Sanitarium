@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task14
+  m_EditorClassIdentifier: 
+  taskId: Task_14_FindExposedDocs
+  taskName: "14.寻找揭露文件"
+  taskName_En: "14. Accusation and Resolve"
+  description_Zh: '任务13后，前往档案室外走廊。在消防箱生成"公文袋"交互点。拾取后获得"残缺的举报信"。'
+  description_En: "Find the \"Exposed Documents\" in a hidden place outside the archive room and make up your mind."
+  completionConditions:
+  - rid: 140001
+  onStartActions:
+  - rid: 140002
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 140001
+      type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u83B7\u5F97\u6B8B\u7F3A\u7684\u4E3E\u62A5\u4FE1"
+        itemID: Item_BrokenReport
+        amount: 1
+    - rid: 140002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_FireBox_Envelope

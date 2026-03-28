@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task11
+  m_EditorClassIdentifier: 
+  taskId: Task_11_SecondMeds_201
+  taskName: "11.再次为201房送药"
+  taskName_En: "11. Second Medication"
+  description_Zh: '任务10完成。在201房生成新的"药瓶"交互点。玩家互动后，播放异化更明显的过场，并解锁床下"观测笔记"交互点。'
+  description_En: "Deliver medication again to Igor Petrov in Room 201."
+  completionConditions:
+  - rid: 110001
+  onStartActions:
+  - rid: 110002
+  onCompleteActions:
+  - rid: 110003
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 110001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u5B8C\u6210\u9001\u836F\u4E92\u52A8"
+        dialogueID: Deliver_Med_201_Second_Animation_End
+        mustBeFullyRead: 1
+    - rid: 110002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_201_Med_Point_Second
+    - rid: 110003
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Unlock_201_BedNote_Interactable

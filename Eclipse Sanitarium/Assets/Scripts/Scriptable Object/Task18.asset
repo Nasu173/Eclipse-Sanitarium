@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task18
+  m_EditorClassIdentifier: 
+  taskId: Task_18_DiscoverMedRecord
+  taskName: "18.发现患者病历"
+  taskName_En: "18. Patient Medical Record"
+  description_Zh: '与档案室"入院者名单"文件交互。在名单中找到并点击玩家角色名，打开"玩家病历"UI，显示诊断信息。随后，门自动上锁。'
+  description_En: "Find the \"Current Admission List\" in the archive room."
+  completionConditions:
+  - rid: 180001
+  onStartActions: []
+  onCompleteActions:
+  - rid: 180002
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: 8b5c90b3ffbb0f04c99554bf5b722aa1, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 180001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u5B8C\u6574\u9605\u8BFB\u73A9\u5BB6\u75C5\u5386\u8BCA\u65AD\u4FE1\u606F"
+        dialogueID: Archive_PlayerRecord_Read
+        mustBeFullyRead: 1
+    - rid: 180002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Lock_Archive_Door

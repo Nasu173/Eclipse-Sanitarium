@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task20A
+  m_EditorClassIdentifier: 
+  taskId: Task_20A_EndingAccept
+  taskName: "20A.结局A：接受转化"
+  taskName_En: "20A. Silent Roots"
+  description_Zh: '选择结局A。在月光浴室播放一段不可操作的结局动画序列，播放职员表。'
+  description_En: "Walk into the pool."
+  completionConditions: []
+  onStartActions:
+  - rid: 200101
+  onCompleteActions: []
+  status: 0
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 200101
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Play_EndingA_Sequence

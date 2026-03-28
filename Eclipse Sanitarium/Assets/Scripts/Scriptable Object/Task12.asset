@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task12
+  m_EditorClassIdentifier: 
+  taskId: Task_12_InvestigateStorage
+  taskName: "12.调查储物室"
+  taskName_En: "12. Storage Room Secret"
+  description_Zh: '任务11完成后，或主动进入储物室。在储物室指定位置生成"隐藏的金属盒"交互点。打开后获得"基因关联报告"。'
+  description_En: "Find hidden documents while looking for backup medication in the storage room."
+  completionConditions:
+  - rid: 120001
+  onStartActions:
+  - rid: 120002
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 120001
+      type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u83B7\u5F97\u57FA\u56E0\u5173\u8054\u62A5\u544A"
+        itemID: Item_GeneReport
+        amount: 1
+    - rid: 120002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_Hidden_MetalBox

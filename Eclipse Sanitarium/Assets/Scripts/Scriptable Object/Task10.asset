@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task10
+  m_EditorClassIdentifier: 
+  taskId: Task_10_OrganizeLibrary
+  taskName: "10.整理图书馆资料"
+  taskName_En: "10. Dusty Records"
+  description_Zh: '持有"图书馆钥匙"并进入图书馆。在指定档案柜生成"初期观察记录"交互点。玩家阅读后，标记任务完成。'
+  description_En: "Organize files in the library."
+  completionConditions:
+  - rid: 100001
+  onStartActions:
+  - rid: 100002
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 100001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u9605\u8BFB\u521D\u671F\u89C2\u5BDF\u8BB0\u5F55\u5B8C\u6210"
+        dialogueID: Library_InitialRecord_Read
+        mustBeFullyRead: 1
+    - rid: 100002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_Library_InitialRecord

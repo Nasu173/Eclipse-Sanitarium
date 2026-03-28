@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task05
+  m_EditorClassIdentifier: 
+  taskId: Task_05_RespondCall_203
+  taskName: "响应203房呼叫"
+  taskName_En: 05. Respond to Call
+  description_Zh: '203房呼叫铃响起，地图标记。玩家进入203房范围，触发与李明阳的对话。'
+  description_En: Respond to the emergency call bell from Lev Yefimov in Room 203.
+  completionConditions:
+  - rid: 50001
+  onStartActions:
+  - rid: 50002
+  - rid: 50003
+  onCompleteActions: []
+  status: 1
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: 5f8e5a9b0c1d2e3f4a5b6c7d8e9f0a1b, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 50001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u5B8C\u6210\u4E0E\u674E\u660E\u9633\u7684\u5BF9\u8BDD"
+        dialogueID: LiMingYang_Dialogue_Complete
+        mustBeFullyRead: 1
+    - rid: 50002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Bell_203_Ring
+    - rid: 50003
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Show_203_Map_Marker

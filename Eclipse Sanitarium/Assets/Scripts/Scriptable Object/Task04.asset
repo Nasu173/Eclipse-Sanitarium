@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task04
+  m_EditorClassIdentifier: 
+  taskId: Task_04_LogRecord
+  taskName: "04.填写巡查日志"
+  taskName_En: "04. Patrol Log"
+  description_Zh: '解锁护士站电脑交互。玩家交互后，打开日志填写UI（提供选项），选择后标记完成。'
+  description_En: "Complete the first electronic patrol log on the nurses' station computer."
+  completionConditions:
+  - rid: 40001
+  onStartActions:
+  - rid: 40002
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: 6e7d4f8a9b0c1d2e3f4a5b6c7d8e9f0a, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 40001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u63D0\u4EA4\u65E5\u5FD7\u540E\u89E6\u53D1"
+        dialogueID: Patrol_Log_Submitted
+        mustBeFullyRead: 1
+    - rid: 40002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Unlock_Nurse_PC

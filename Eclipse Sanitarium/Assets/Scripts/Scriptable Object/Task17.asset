@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task17
+  m_EditorClassIdentifier: 
+  taskId: Task_17_CheckExternalCamera
+  taskName: "17.查看外部监控"
+  taskName_En: "17. Meanwhile"
+  description_Zh: '与档案室监控墙交互。切换监控画面至外部隔离区，播放一段循环的恐怖影像。'
+  description_En: "Switch the monitoring screen to the outside of the sanitarium."
+  completionConditions:
+  - rid: 170001
+  onStartActions: []
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 170001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u5B8C\u6210\u76D1\u63A7\u753B\u9762\u67E5\u770B"
+        dialogueID: Archive_ExternalCamera_Viewed
+        mustBeFullyRead: 1

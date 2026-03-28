@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task07
+  m_EditorClassIdentifier: 
+  taskId: Task_07_FirstSecret
+  taskName: "07.探索三楼走廊"
+  taskName_En: "07. First Secret"
+  description_Zh: '在三楼走廊生成“湿润纤维织物”交互点。玩家拾取后，标记任务完成。'
+  description_En: "Explore the third-floor corridor and obtain the \"Moist Fiber Fabric\"."
+  completionConditions:
+  - rid: 70001
+  onStartActions:
+  - rid: 70002
+  onCompleteActions: []
+  status: 2
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 70001
+      type: {class: ItemCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u62FE\u53D6\u6E7F\u6DA6\u7EA4\u7EF4\u7EC7\u7269"
+        itemID: Item_MoistFiber
+        amount: 1
+    - rid: 70002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_Moist_Fiber
