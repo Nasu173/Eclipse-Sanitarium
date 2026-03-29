@@ -126,11 +126,12 @@ public class NPCComponent : MonoBehaviour, IInteractable
 
         Debug.Log($"NPC {npcDisplayName} 进入阶段 {newPhase}");
     }
-    /// <summary>
-    /// 获取当前NPC的名称
-    /// </summary>
     public string GetNPCName()
     {
+        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
+        {
+            return npcDisplayName_En;
+        }
         return npcDisplayName;
     }
 
