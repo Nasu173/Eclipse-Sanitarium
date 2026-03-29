@@ -5,61 +5,53 @@ public class ReadableItem : MonoBehaviour, IInteractable
 {
     [Header("文档内容配置")]
     public string documentTitle = "未知文件";
-    public string documentTitle_En = "Unknown Document";
 
-    // [TextArea] 是个非常实用的标签！
-    // 它会在 Unity 面板里生成一个多行大文本框，方便策划填入长篇的“观测笔记”或“日记”
     [TextArea(5, 10)]
     public string documentContent = "这里是文档的正文内容...";
-    [TextArea(5, 10)]
-    public string documentContent_En = "Document content...";
 
     [Header("系统设置")]
-    // 对应表格里的“阅读完成后自动记录到文档集UI”
     public bool isRecordable = true;
 
-    // --- 以下是必须实现的接口方法 ---
+    // 【新增】用于存放描边组件的引用
+    private Outline _outline;
+
+    void Start()
+    {
+        // 游戏开始时，尝试获取身上的 Outline 组件
+        _outline = GetComponent<Outline>();
+
+        // 如果没有手动挂载 Outline 组件，代码自动帮它加上，防止报错
+        if (_outline == null)
+        {
+            _outline = gameObject.AddComponent<Outline>();
+        }
+
+        // 初始化描边的样式（恐怖游戏建议用极细的白光或微弱的冷光）
+        _outline.OutlineMode = Outline.Mode.OutlineAll;
+        _outline.OutlineColor = new Color(1f, 1f, 1f, 0.5f); // 半透明的白色
+        _outline.OutlineWidth = 3f;                          // 描边宽度
+
+        // 初始状态下必须关闭发光
+        _outline.enabled = false;
+    }
 
     public string GetInteractPrompt()
     {
-        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
-        {
-            return "Read " + documentTitle_En;
-        }
         return "阅读 " + documentTitle;
     }
 
     public void OnInteract()
     {
-        // 当玩家按下 E 键时触发
-        // 【第一步】暂停玩家的移动和视角转动（通常恐怖游戏阅读时不能乱跑）
-
-        // 【第二步】呼出阅读界面的 UI 面板，并把文字传进去
-        // 极简！直接把当前物品配好的标题和正文扔给单例管理器
-        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
-        {
-            DocumentUIManager.Instance.ShowDocument(documentTitle_En, documentContent_En);
-        }
-        else
-        {
-            DocumentUIManager.Instance.ShowDocument(documentTitle, documentContent);
-        }
-
-        // 【第三步】如果勾选了记录，就把它扔进玩家的档案集里
-        if (isRecordable)
-        {
-            Debug.Log($"已将《{documentTitle}》永久记录到玩家的档案库中！");
-        }
+        // 呼出全局文档 UI
+        DocumentUIManager.Instance.ShowDocument(documentTitle, documentContent);
     }
 
     public void ToggleHighlight(bool isHighlighted)
     {
-        // 这里的逻辑和你之前写的 TestItem 一样
-        // 如果你们项目后续用了描边插件（Outline），就获取 Outline 组件并开关它
-        // 目前为了测试，我们可以先留空，或者简单变色
-        if (TryGetComponent<Renderer>(out Renderer r))
+        // 【核心修改】用开关 Outline 组件代替修改材质颜色
+        if (_outline != null)
         {
-            r.material.color = isHighlighted ? Color.yellow : Color.white;
+            _outline.enabled = isHighlighted;
         }
     }
 }

@@ -1,61 +1,75 @@
 using UnityEngine;
-using UnityEngine.Events; // 【核心】必须引入这个命名空间才能用 UnityEvent
+using UnityEngine.Events;
 
 public class MechanismItem : MonoBehaviour, IInteractable
 {
     [Header("交互提示")]
     public string interactPrompt = "操作 控制台";
-    public string interactPrompt_En = "Interact";
 
     [Header("机关设置")]
-    // 很多解密机关（比如开锁）是一次性的，勾选后用过一次就不能再按了
     public bool isOneTimeUse = false;
     private bool _hasBeenUsed = false;
 
     [Header("触发事件")]
-    // 这里的 UnityEvent 会在编辑器面板里变成一个可以无限添加列表的 UI 槽位
     public UnityEvent onInteractEvent;
+
+    // 【新增】用于存放描边组件的引用
+    private Outline _outline;
+
+    void Start()
+    {
+        // 尝试获取或自动添加 Outline 组件
+        _outline = GetComponent<Outline>();
+        if (_outline == null)
+        {
+            _outline = gameObject.AddComponent<Outline>();
+        }
+
+        // 初始化描边的样式
+        _outline.OutlineMode = Outline.Mode.OutlineAll;
+        _outline.OutlineColor = new Color(1f, 1f, 1f, 0.5f);
+        _outline.OutlineWidth = 3f;
+
+        _outline.enabled = false;
+    }
 
     public string GetInteractPrompt()
     {
-        // 如果是一次性机关且已经用过，就不再显示提示
         if (isOneTimeUse && _hasBeenUsed) return "";
-
-        if (GlobalLanguage.Instance != null && GlobalLanguage.Instance.currentLanguageType == GlobalLanguage.LanguageType.En)
-        {
-            return interactPrompt_En;
-        }
         return interactPrompt;
     }
 
     public void OnInteract()
     {
-        // 防御逻辑：用过的一次性机关直接拦截
         if (isOneTimeUse && _hasBeenUsed) return;
 
         if (isOneTimeUse)
         {
             _hasBeenUsed = true;
+
+            // 【新增】如果是一次性机关，按完后立刻强制熄灭高光
+            if (_outline != null)
+            {
+                _outline.enabled = false;
+            }
         }
 
-        // 【核心】呼叫所有在 Inspector 面板里连线的函数
-        // "?" 是 C# 的安全调用，意思是如果里面没连线，就什么都不做，防止报错
         onInteractEvent?.Invoke();
     }
 
     public void ToggleHighlight(bool isHighlighted)
     {
-        // 如果用过了，就不再高亮
+        // 如果是一次性机关且用过了，绝不发光
         if (isOneTimeUse && _hasBeenUsed)
         {
-            if (TryGetComponent<Renderer>(out Renderer r)) r.material.color = Color.white;
+            if (_outline != null) _outline.enabled = false;
             return;
         }
 
-        // 基础变色测试
-        if (TryGetComponent<Renderer>(out Renderer renderer))
+        // 【核心修改】用开关 Outline 组件代替修改材质颜色
+        if (_outline != null)
         {
-            renderer.material.color = isHighlighted ? Color.yellow : Color.white;
+            _outline.enabled = isHighlighted;
         }
     }
 }
