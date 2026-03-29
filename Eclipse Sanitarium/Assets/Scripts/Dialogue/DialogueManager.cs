@@ -78,6 +78,34 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        // 【新增】向全局语言管家订阅“语言改变”事件
+        if (GlobalLanguage.Instance != null)
+        {
+            GlobalLanguage.Instance.OnLanguageChanged += RefreshDialogueLanguage;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 【新增】销毁时取消订阅，防止内存泄漏报错
+        if (GlobalLanguage.Instance != null)
+        {
+            GlobalLanguage.Instance.OnLanguageChanged -= RefreshDialogueLanguage;
+        }
+    }
+
+    // 【新增】当听到语言切换的广播时，立刻执行这个方法
+    private void RefreshDialogueLanguage()
+    {
+        if (_isDialogueActive && _currentDialogue != null)
+        {
+            // 如果当前正在对话，直接跳过打字，显示新语言的全段文本
+            SkipTyping();
+        }
+    }
+
     private void Update()
     {
         if (_isDialogueActive)
@@ -110,6 +138,9 @@ public class DialogueManager : MonoBehaviour
         if (currentLine != null)
         {
             dialogueText.text = currentLine.dialogueText;
+
+            // 【关键修复】加上这一行！你原先的代码跳过打字时没有刷新名字
+            speakerNameText.text = currentLine.speakerName;
         }
         _isTyping = false;
 
