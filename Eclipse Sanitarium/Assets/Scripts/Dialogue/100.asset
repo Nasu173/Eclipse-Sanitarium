@@ -19,7 +19,7 @@ MonoBehaviour:
     waitForInput: 1
     autoContinueDelay: 0
   dialogueLines_En:
-  - speakerName: 
+  - speakerName: Day shift nurse ALin
     dialogueText: Medicate on time, record abnormalities, don't go to the third floor.
       Check the manual for everything else.
     waitForInput: 1

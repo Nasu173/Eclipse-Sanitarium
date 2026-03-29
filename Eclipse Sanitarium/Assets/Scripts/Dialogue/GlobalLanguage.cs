@@ -40,7 +40,10 @@ public class GlobalLanguage : MonoBehaviour
     {
         if (isFirstTime)
         {
-            languagePanel.gameObject.SetActive(true);
+            if (languagePanel != null)
+            {
+                languagePanel.gameObject.SetActive(true);
+            }
             isFirstTime = false;
         }
     }
@@ -105,7 +108,10 @@ public class GlobalLanguage : MonoBehaviour
     {
         yield return StartCoroutine(FadeIn());
 
-        languagePanel.gameObject.SetActive(false);
+        if (languagePanel != null)
+        {
+            languagePanel.gameObject.SetActive(false);
+        }
 
         yield return new WaitForSeconds(0.4f);
 
