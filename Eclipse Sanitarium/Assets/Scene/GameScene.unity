@@ -927,7 +927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.799988, y: -117.2}
+  m_AnchoredPosition: {x: 5.799988, y: -117.20001}
   m_SizeDelta: {x: -139.7, y: -342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310462524
@@ -1858,7 +1858,7 @@ MonoBehaviour:
   whisperUI: {fileID: 0}
   whisperText: {fileID: 0}
   uiOffset: {x: 1.66, y: 0.67, z: -0}
-  phaseWhispers: []
+  whispersData: {fileID: 0}
   typingSpeed: 20
   waitBetweenWhispers: 2
   triggerRange: 3
@@ -4205,7 +4205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -505.00006, y: 289}
+  m_AnchoredPosition: {x: -505, y: 289}
   m_SizeDelta: {x: -719.85, y: -454.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1807536598
