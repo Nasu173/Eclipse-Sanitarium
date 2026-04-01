@@ -29,7 +29,20 @@ public class TaskManager : MonoBehaviour
 
     private void Start()
     {
+        if (GlobalLanguage.Instance != null)
+        {
+            GlobalLanguage.Instance.OnLanguageChanged += OnLanguageChanged;
+        }
+
         if (taskDatabase.Count > 0) StartTask(taskDatabase[0]);
+    }
+
+    private void OnDestroy()
+    {
+        if (GlobalLanguage.Instance != null)
+        {
+            GlobalLanguage.Instance.OnLanguageChanged -= OnLanguageChanged;
+        }
     }
 
     public void StartTask(TaskData task)
@@ -61,9 +74,16 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    public void RequestTaskCompletion()
+    public void RequestTaskCompletion(TaskData requiredTask = null)
     {
         if (activeTask == null || activeTask.status != TaskStatus.InProgress) return;
+
+        // 【安全拦截】如果调用方明确必须要完成指定任务，但这刚好不是当前任务时，直接拒绝完成。
+        if (requiredTask != null && activeTask != requiredTask)
+        {
+            Debug.Log($"<color=yellow>[任务系统拦截]</color> 企图强行完成特定任务 [{requiredTask.taskName}]，但当前进行中的任务是 [{activeTask.taskName}]，该请求已被拒绝。");
+            return;
+        }
 
         if (activeTask.CheckConditions())
         {
@@ -71,7 +91,7 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("[任务系统] 条件未满足，无法完成。");
+            Debug.Log("[任务系统] 条件未满足，无法完成");
             OnTaskUpdated?.Invoke(activeTask);
         }
     }

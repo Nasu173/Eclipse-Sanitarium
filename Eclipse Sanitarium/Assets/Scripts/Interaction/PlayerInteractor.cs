@@ -11,11 +11,11 @@ public class PlayerInteractor : MonoBehaviour
     public LayerMask interactableLayer;       // 互动物品的图层
 
     [Header("操作与 UI (近距离)")]
-    public float interactRange = 2.5f;        // 必须靠近到多近才能按 E
+    public float interactRange = 4.5f;        // 必须靠近到多近才能按 E
     public TextMeshProUGUI promptText;        // 【修改】使用 TextMeshProUGUI 组件
 
     private Camera _mainCam;
-    private IInteractable _interactionTarget; // 当前准心对准、可以按 E 的目标
+    private IInteractable[] _interactionTargets; // 当前准心对准、可以按 E 的对象数
 
     // 内部列表：用来记录当前画面里有哪些物体正在发光
     private List<IInteractable> _highlightedObjects = new List<IInteractable>();
@@ -117,45 +117,60 @@ public class PlayerInteractor : MonoBehaviour
     // ==========================================
     private void HandleInteractionRaycast()
     {
-        // 从屏幕正中心发射一条【短】射线
         Ray ray = new Ray(_mainCam.transform.position, _mainCam.transform.forward);
 
-        // 注意这里的距离换成了 interactRange (比如 2.5米)
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange, interactableLayer))
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            IInteractable[] interactables = hit.collider.GetComponents<IInteractable>();
 
-            if (interactable != null)
+            if (interactables.Length > 0)
             {
-                // 记录为当前可交互目标，并显示 TMPro UI
-                _interactionTarget = interactable;
-                promptText.text = "[E] " + _interactionTarget.GetInteractPrompt();
+                _interactionTargets = interactables;
+                
+                // 找出第一个有意义的提示文本
+                string finalPrompt = "";
+                foreach (var interactable in interactables)
+                {
+                    string p = interactable.GetInteractPrompt();
+                    if (!string.IsNullOrEmpty(p))
+                    {
+                        finalPrompt = p;
+                        break;
+                    }
+                }
+
+                promptText.text = "[E] " + finalPrompt;
                 promptText.gameObject.SetActive(true);
 
-                // 按下 E 键执行操作
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    _interactionTarget.OnInteract();
+                    foreach (var interactable in interactables)
+                    {
+                        // 执行所有附带的交互逻辑
+                        if ((interactable as UnityEngine.Object) != null)
+                        {
+                            interactable.OnInteract();
+                        }
+                    }
 
-                    // 保护机制：如果物品被拾取后销毁了，立刻清空 UI
-                    if ((_interactionTarget as UnityEngine.Object) == null)
+                    // 如果检测到物体已经被摧毁（例如被拾取），立即清理 UI
+                    if (hit.collider == null || !hit.collider.gameObject.activeInHierarchy)
                     {
                         ClearInteractionTarget();
                     }
                 }
-                return; // 成功找到交互目标，直接结束函数
+                return;
             }
         }
 
-        // 如果射线没有打到互动物品，或者距离太远
         ClearInteractionTarget();
     }
 
     private void ClearInteractionTarget()
     {
-        if (_interactionTarget != null)
+        if (_interactionTargets != null)
         {
-            _interactionTarget = null;
+            _interactionTargets = null;
             promptText.gameObject.SetActive(false);
         }
     }

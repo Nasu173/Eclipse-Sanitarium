@@ -11,8 +11,8 @@ public class NPCCameraLock : MonoBehaviour
     public float transitionTime = 0.5f;       // 镜头过渡时间
 
     private Camera _playerCamera;
-    private MonoBehaviour _playerMovement;    // 玩家移动控制脚本
-    private MonoBehaviour _playerLook;        // 玩家视角控制脚本
+    private FirstPersonController _playerMovement;    // 玩家移动控制脚本
+    private FirstPersonLook _playerLook;        // 玩家视角控制脚本
     private DialogueManager _dialogueManager; // 对话管理器引用
 
     // 保存原始状态
@@ -37,9 +37,8 @@ public class NPCCameraLock : MonoBehaviour
         if (_isLocking || _playerCamera == null) return;
 
         // 获取玩家控制组件
-        GameObject player = _playerCamera.transform.root.gameObject;
-        _playerMovement = player.GetComponent("FirstPersonController") as MonoBehaviour;
-        _playerLook = _playerCamera.GetComponent("FirstPersonLook") as MonoBehaviour;
+        _playerMovement = _playerCamera.GetComponentInParent<FirstPersonController>();
+        _playerLook = _playerCamera.GetComponent<FirstPersonLook>();
 
         StartCoroutine(LockCoroutine());
     }

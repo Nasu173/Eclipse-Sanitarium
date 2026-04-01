@@ -26,3 +26,4 @@ MonoBehaviour:
     autoContinueDelay: 0
   closeOnComplete: 1
   CurrentTaskWillComplete: 1
+  targetTaskToComplete: {fileID: 11400000, guid: 1a65187e788984c48aff1a4a9e07e064, type: 2}
