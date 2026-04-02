@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskId: Task_19A_ToMoonlightBath
   taskName: "19A. \u524D\u5F80\u6708\u5149\u6D74\u5BA4"
-  taskName_En: "19A. To the Moonlight Bath"
-  description_Zh: "\u8DDF\u968F\u62A4\u58EB\u957F\u524D\u5F80\u6708\u5149\u6D74\u5BA4"
-  description_En: "Follow the Head Nurse to the Moonlight Bath."
+  taskName_En: 19A. To the Moonlight Bath
+  description_Zh: "\u8DDF\u968F\u62A4\u58EB\u957F\u524D\u5F80\u6708\u5149\u6D74\u5BA4\u3002"
+  description_En: Follow the Head Nurse to the Moonlight Bath.
   completionConditions:
   - rid: 191001
   onStartActions: []

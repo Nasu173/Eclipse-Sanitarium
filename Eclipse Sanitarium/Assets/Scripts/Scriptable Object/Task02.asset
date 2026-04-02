@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Task02
   m_EditorClassIdentifier: 
   taskId: Task_02_ReadManual
-  taskName: "02.阅读守则"
-  taskName_En: "02. Newcomer"
-  description_Zh: '仔细阅读护士站张贴的《守则》。'
-  description_En: "Carefully read the \"Rules\" posted at the nurses' station."
+  taskName: "02.\u521D\u6765\u4E4D\u5230"
+  taskName_En: 02. Newcomer
+  description_Zh: "\u4ED4\u7EC6\u9605\u8BFB\u62A4\u58EB\u7AD9\u5F20\u8D34\u7684\u300A\u5B88\u5219\u300B\u3002"
+  description_En: Carefully read the "Rules" posted at the nurses' station.
   completionConditions:
   - rid: 20001
   onStartActions:

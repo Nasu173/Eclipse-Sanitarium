@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Task20A
   m_EditorClassIdentifier: 
   taskId: Task_20A_EndingAccept
-  taskName: "20A.结局A：接受转化"
-  taskName_En: "20A. Silent Roots"
-  description_Zh: '选择结局A。在月光浴室播放一段不可操作的结局动画序列，播放职员表。'
-  description_En: "Walk into the pool."
+  taskName: "20A. \u9759\u8C27\u624E\u6839"
+  taskName_En: 20A. Silent Roots
+  description_Zh: "\u8D70\u5165\u6C60\u4E2D"
+  description_En: Walk into the pool.
   completionConditions: []
   onStartActions:
   - rid: 200101

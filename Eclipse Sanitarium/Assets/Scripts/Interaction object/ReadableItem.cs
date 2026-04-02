@@ -14,18 +14,22 @@ public class ReadableItem : MonoBehaviour, IInteractable
 
     [Header("系统设置")]
     public bool isRecordable = true;
+    public bool enableOutline = true; // 【新增】是否在此物体上启用描边高亮
 
     private Outline _outline;
 
     void Start()
     {
-        _outline = GetComponent<Outline>();
-        if (_outline == null) _outline = gameObject.AddComponent<Outline>();
+        if (enableOutline)
+        {
+            _outline = GetComponent<Outline>();
+            if (_outline == null) _outline = gameObject.AddComponent<Outline>();
 
-        _outline.OutlineMode = Outline.Mode.OutlineAll;
-        _outline.OutlineColor = new Color(1f, 1f, 1f, 0.5f);
-        _outline.OutlineWidth = 3f;
-        _outline.enabled = false;
+            _outline.OutlineMode = Outline.Mode.OutlineAll;
+            _outline.OutlineColor = new Color(1f, 1f, 1f, 0.5f);
+            _outline.OutlineWidth = 3f;
+            _outline.enabled = false;
+        }
     }
 
     public string GetInteractPrompt()

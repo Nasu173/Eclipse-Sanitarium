@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Task14
   m_EditorClassIdentifier: 
   taskId: Task_14_FindExposedDocs
-  taskName: "14.寻找揭露文件"
-  taskName_En: "14. Accusation and Resolve"
-  description_Zh: '任务13后，前往档案室外走廊。在消防箱生成"公文袋"交互点。拾取后获得"残缺的举报信"。'
-  description_En: "Find the \"Exposed Documents\" in a hidden place outside the archive room and make up your mind."
+  taskName: "14.\u6307\u63A7\u4E0E\u51B3\u610F"
+  taskName_En: 14. Accusation and Resolve
+  description_Zh: "\u5728\u6863\u6848\u5BA4\u5916\u7684\u9690\u853D\u5904\u627E\u5230\u201C\u63ED\u9732\u6587\u4EF6\u201D\uFF0C\u5E76\u4E0B\u5B9A\u51B3\u5FC3"
+  description_En: Find the "Exposed Documents" in a hidden place outside the archive
+    room and make up your mind.
   completionConditions:
   - rid: 140001
   onStartActions:

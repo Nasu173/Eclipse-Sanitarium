@@ -25,6 +25,7 @@ public class GlobalLanguage : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // 【修复警告】确保自身是根节点
             // 保证切换场景时，这个语言管家不会被销毁
             DontDestroyOnLoad(gameObject);
         }

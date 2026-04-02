@@ -56,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // 【修复警告】确保自身是根节点
             DontDestroyOnLoad(gameObject);
         }
         else
