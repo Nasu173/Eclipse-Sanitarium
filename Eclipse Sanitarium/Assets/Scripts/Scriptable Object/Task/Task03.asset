@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21205cf55581c3045a68f0683ae27942, type: 3}
+  m_Name: Task03
+  m_EditorClassIdentifier: 
+  taskId: Task_03_FirstMeds_201
+  taskName: "03.\u9996\u6B21\u9001\u836F"
+  taskName_En: 03. First Medication
+  description_Zh: "\u4E3A201\u623F\u7684\u4F0A\u6208\u5C14\xB7\u5F7C\u5F97\u7F57\u592B\u9001\u53BB\u591C\u95F4\u836F\u7269"
+  description_En: Deliver night medication to Igor Petrov  in Room 201.
+  completionConditions:
+  - rid: 30001
+  onStartActions:
+  - rid: 30002
+  onCompleteActions: []
+  status: 1
+  currentProgress: 0
+  totalProgress: 1
+  branches: []
+  defaultNextTask: {fileID: 11400000, guid: 7d6c3e7f8a9b0c1d2e3f4a5b6c7d8e9f, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 30001
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: "\u4EA4\u4E92\u5E76\u64AD\u653E\u52A8\u753B\u540E\u89E6\u53D1"
+        dialogueID: Deliver_Med_201_Animation_End
+        mustBeFullyRead: 1
+    - rid: 30002
+      type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
+      data:
+        eventName: Spawn_201_Med_Point

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eae5e71c44a2d4fb29a60625105c1c, type: 3}
+  m_Name: 108
+  m_EditorClassIdentifier: 
+  dialogueId: 8
+  dialogueLines_Ch:
+  - speakerName: "\u62A4\u58EB\u957F"
+    dialogueText: "\u4F60\u7684\u63A2\u7D22\u6B32\u548C\u53CD\u6297\uFF0C\u6B63\u662F\u4F60\u4EBA\u7C7B\u610F\u8BC6\u7684\u6700\u540E\u95EA\u5149\u3002\u8FD9\u5F88\u597D\uFF0C\u8BF4\u660E\u4F60\u8FD8\u5728\u6297\u4E89\u3002"
+    waitForInput: 1
+    autoContinueDelay: 0
+  - speakerName: "\u62A4\u58EB\u957F"
+    dialogueText: "\u4F46\u95EA\u5149\u4E4B\u540E\u5462\uFF1F\u662F\u6C38\u6052\u7684\u9ED1\u6697\uFF0C\u8FD8\u662F\u878D\u5165\u8FD9\u7247\u9759\u8C27\u4E4B\u6797\uFF1F"
+    waitForInput: 1
+    autoContinueDelay: 0
+  - speakerName: "\u62A4\u58EB\u957F"
+    dialogueText: "\u6708\u5149\u6D74\u5BA4\u7684\u9635\u5217\u5DF2\u7ECF\u6821\u51C6\u5B8C\u6BD5\u3002\u9009\u62E9\u6743\uFF0C\u6700\u540E\u4E00\u6B21\uFF0C\u5728\u4F60\u624B\u4E2D\u3002"
+    waitForInput: 1
+    autoContinueDelay: 0
+  dialogueLines_En:
+  - speakerName: 
+    dialogueText: Your curiosity and resistance are the last glimmers of your human
+      consciousness. That's good, it shows you're still fighting.
+    waitForInput: 1
+    autoContinueDelay: 0
+  - speakerName: 
+    dialogueText: But after the glimmer? Eternal darkness, or merging into this quiet
+      forest?
+    waitForInput: 1
+    autoContinueDelay: 0
+  - speakerName: 
+    dialogueText: The array in the Moonlight Bathroom is calibrated. The choice,
+      for the last time, is in your hands.
+    waitForInput: 1
+    autoContinueDelay: 0
+  closeOnComplete: 1
+  CurrentTaskWillComplete: 0
