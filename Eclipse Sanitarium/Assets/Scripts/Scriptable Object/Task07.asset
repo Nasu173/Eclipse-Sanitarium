@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Task07
   m_EditorClassIdentifier: 
   taskId: Task_07_FirstSecret
-  taskName: "07.探索三楼走廊"
-  taskName_En: "07. First Secret"
-  description_Zh: '在三楼走廊生成“湿润纤维织物”交互点。玩家拾取后，标记任务完成。'
-  description_En: "Explore the third-floor corridor and obtain the \"Moist Fiber Fabric\"."
+  taskName: "07.\u521D\u6B21\u7AA5\u79D8"
+  taskName_En: 07. First Secret
+  description_Zh: "\u5728\u4E09\u697C\u8D70\u5ECA\u751F\u6210\u201C\u6E7F\u6DA6\u7EA4\u7EF4\u7EC7\u7269\u201D\u4EA4\u4E92\u70B9\u3002\u73A9\u5BB6\u62FE\u53D6\u540E\uFF0C\u6807\u8BB0\u4EFB\u52A1\u5B8C\u6210\u3002"
+  description_En: Explore the third-floor corridor and obtain the "Moist Fiber Fabric".
   completionConditions:
   - rid: 70001
   onStartActions:

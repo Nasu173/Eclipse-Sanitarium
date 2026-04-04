@@ -56,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null); // 【修复警告】确保自身是根节点
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -363,11 +364,11 @@ public class DialogueManager : MonoBehaviour
         // 处理任务完成
         if (_currentDialogue != null && _currentDialogue.CurrentTaskWillComplete)
         {
-            Debug.Log("对话结束，触发任务完成");
+            Debug.Log("对话结束，触发任务验证（可能是尝试完成指定任务）");
             // 调用任务系统完成当前任务
             if (TaskManager.Instance != null)
             {
-                TaskManager.Instance.RequestTaskCompletion();
+                TaskManager.Instance.RequestTaskCompletion(_currentDialogue.targetTaskToComplete);
             }
         }
 

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Task18_5
   m_EditorClassIdentifier: 
   taskId: Task_18_5_NurseConfession
-  taskName: "18.5.做出最终抉择"
-  taskName_En: "18.5. Head Nurse's Confession"
-  description_Zh: "任务18完成后，护士长出现。触发与护士长的最终对话，弹出两个选项：A（接受）传送至月光浴室；B（抗争）解锁配电室，任务更新为切断电源。"
-  description_En: "Talk to the Head Nurse and accept the final explanation."
+  taskName: "18.5. \u62A4\u58EB\u957F\u7684\u81EA\u767D"
+  taskName_En: 18.5. Head Nurse's Confession
+  description_Zh: "\u4E0E\u62A4\u58EB\u957F\u5BF9\u8BDD\uFF0C\u63A5\u53D7\u6700\u540E\u89E3\u91CA"
+  description_En: Talk to the Head Nurse and accept the final explanation.
   completionConditions:
   - rid: 185001
   onStartActions:

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Task20B
   m_EditorClassIdentifier: 
   taskId: Task_20B_EndingResist
-  taskName: "20B.结局B：拒绝转化"
-  taskName_En: "20B. Underground Chase and Escape"
-  description_Zh: '选择结局B。引导玩家前往配电室操作电闸（小游戏）。停电后触发追逐战，护士长AI激活。玩家需逃往地下室，在地下室利用"月光透镜"机关延缓护士长，最终进入通风管道。'
-  description_En: "Use the lens to escape the Head Nurse."
+  taskName: "20B. \u5730\u4E0B\u8FFD\u9010\u4E0E\u9003\u79BB"
+  taskName_En: 20B. Underground Chase and Escape
+  description_Zh: "\u4F7F\u7528\u6298\u5C04\u955C\u9003\u79BB\u62A4\u58EB\u957F"
+  description_En: Use the lens to escape the Head Nurse.
   completionConditions:
   - rid: 200201
   onStartActions:
