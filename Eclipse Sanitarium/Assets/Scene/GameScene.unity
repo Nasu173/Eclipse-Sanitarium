@@ -1898,7 +1898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5999756, y: -117.20003}
+  m_AnchoredPosition: {x: 7.5999756, y: -117.20001}
   m_SizeDelta: {x: -95.2, y: -342.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310462524
@@ -6058,10 +6058,14 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 10
   crouchSpeed: 1.5
+  canJump: 1
+  jumpHeight: 1.2
+  jumpBufferTime: 0.2
+  coyoteTime: 0.15
   standingHeight: 2
   crouchingHeight: 1
   cameraTransform: {fileID: 198461321}
-  gravity: -9.81
+  gravity: -25
 --- !u!143 &1407711703
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7489,7 +7493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -4.3499756, y: 205.32002}
+  m_AnchoredPosition: {x: -4.3499756, y: 205.32}
   m_SizeDelta: {x: 300, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!225 &1807536598
