@@ -18,7 +18,7 @@ MonoBehaviour:
   description_Zh: "\u4E0E\u62A4\u58EB\u963F\u6797\u4EA4\u63A5"
   description_En: Handover with Arin.
   completionConditions:
-  - rid: 10001
+  - rid: 2424162813633101824
   onStartActions:
   - rid: 10002
   - rid: 10003
@@ -31,12 +31,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 10001
-      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
-      data:
-        description: "\u5B8C\u6210\u963F\u7433\u7684\u4EA4\u63A5\u5BF9\u8BDD"
-        dialogueID: Nurse_Arin_Handover
-        mustBeFullyRead: 1
     - rid: 10002
       type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
       data:
@@ -45,3 +39,9 @@ MonoBehaviour:
       type: {class: WorldEventAction, ns: , asm: Assembly-CSharp}
       data:
         eventName: Unlock_Player_Control
+    - rid: 2424162813633101824
+      type: {class: DialogueCondition, ns: , asm: Assembly-CSharp}
+      data:
+        description: 
+        dialogueID: 
+        mustBeFullyRead: 1

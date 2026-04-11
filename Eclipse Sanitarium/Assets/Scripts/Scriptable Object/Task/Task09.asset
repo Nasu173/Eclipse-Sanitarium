@@ -22,7 +22,7 @@ MonoBehaviour:
   onStartActions: []
   onCompleteActions:
   - rid: 90002
-  status: 2
+  status: 1
   currentProgress: 0
   totalProgress: 1
   branches: []
