@@ -1,32 +1,41 @@
 using UnityEngine;
 
-// 强制要求有 CharacterController 组件
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
     [Header("移动速度参数")]
-    public float walkSpeed = 3.0f;     // 行走速度
-    public float sprintSpeed = 6.0f;   // 奔跑速度
-    public float crouchSpeed = 1.5f;   // 下蹲时的移动速度
+    public float walkSpeed = 3.0f;
+    public float sprintSpeed = 6.0f;
+    public float crouchSpeed = 1.5f;
+
+    [Header("跳跃参数")]
+    public bool canJump = true;
+    public float jumpHeight = 1.2f;
+
+    [Header("跳跃手感优化 (高级)")]
+    [Tooltip("按键缓冲：落地前多久按下空格能被系统记住（提升连跳顺滑度）")]
+    public float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+
+    [Tooltip("土狼时间：离开地面后或走下台阶时，有多久的宽限期可以起跳（防失灵）")]
+    public float coyoteTime = 0.15f;
+    private float coyoteTimeCounter;
 
     [Header("下蹲参数")]
-    public float standingHeight = 2.0f;     // 站立时胶囊体的高度
-    public float crouchingHeight = 1.0f;    // 下蹲时胶囊体的高度
-    public Transform cameraTransform;       // 玩家头部相机的 Transform 组件
-    private float defaultCameraY;           // 记录相机默认的高度
+    public float standingHeight = 2.0f;
+    public float crouchingHeight = 1.0f;
+    public Transform cameraTransform;
+    private float defaultCameraY;
 
-    [Header("物理与重力")]
-    public float gravity = -9.81f;          // 模拟真实世界的重力加速度
-    private Vector3 velocity;               // 记录当前角色在 Y 轴（上下）的速度
+    [Header("物理与滞空时间")]
+    public float gravity = -15.0f;
+    private Vector3 velocity;
 
-    // 内部组件引用
     private CharacterController controller;
 
     void Start()
     {
-        // 获取 CharacterController 组件
         controller = GetComponent<CharacterController>();
-        // 记录相机初始的相对高度
         defaultCameraY = cameraTransform.localPosition.y;
 
         if (DialogueManager.Instance != null)
@@ -50,21 +59,44 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        UpdateJumpTimers(); // 【新增】更新手感优化计时器
 
         HandleMovement();
         HandleCrouch();
+        HandleJump();
         ApplyGravity();
     }
 
-    // --- 逻辑分块 1：前后左右移动与奔跑 ---
+    // --- 核心手感优化：计时器系统 ---
+    private void UpdateJumpTimers()
+    {
+        // 1. 土狼时间计时器 (判断是否刚离开地面)
+        if (controller.isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime; // 只要踩在地上，就充满宽限时间
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime; // 离开地面，开始倒计时
+        }
+
+        // 2. 跳跃缓冲计时器 (判断最近是否按过空格)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime; // 只要按了空格，就记住这个输入0.2秒
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime; // 没按空格，开始倒计时遗忘
+        }
+    }
+
+    // --- 逻辑分块 1：前后左右移动 ---
     private void HandleMovement()
     {
-        // 1. 获取输入
-        float x = Input.GetAxis("Horizontal"); //A/D
-        float z = Input.GetAxis("Vertical"); //W/S
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        // 2. 决定当前速度：按住了左Shift，是奔跑速度；否则是走路速度
-        // （如果正在下蹲，强制用下蹲速度）
         float currentSpeed = walkSpeed;
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -75,50 +107,52 @@ public class FirstPersonController : MonoBehaviour
             currentSpeed = sprintSpeed;
         }
 
-        // 3. 计算方向：局部右方向 * x + 局部前方向 * z
         Vector3 moveDirection = transform.right * x + transform.forward * z;
-
-        // 4. 执行移动：方向 * 速度 * 帧时间
         controller.Move(moveDirection * currentSpeed * Time.deltaTime);
     }
 
     // --- 逻辑分块 2：处理下蹲 ---
     private void HandleCrouch()
     {
-
-        // 如果按住了左 Ctrl 键
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            // 把胶囊体的高度砍半
             controller.height = crouchingHeight;
-            // 降低相机的高度
             cameraTransform.localPosition = new Vector3(0, defaultCameraY * 0.5f, 0);
         }
         else
         {
-            // 松开 Ctrl 时，恢复站立高度和相机高度
             controller.height = standingHeight;
             cameraTransform.localPosition = new Vector3(0, defaultCameraY, 0);
         }
 
-        // 改变了高度后，把胶囊体的中心点重新对齐到底部
         controller.center = new Vector3(0, controller.height / 2, 0);
     }
 
-    // --- 逻辑分块 3：处理重力 ---
+    // --- 逻辑分块 3：处理跳跃 ---
+    private void HandleJump()
+    {
+        // 判定条件改变：
+        // 只要 1.允许跳跃 2.不在下蹲 3.按键缓冲内(刚按了空格) 4.土狼时间内(刚离开地面)
+        if (canJump && !Input.GetKey(KeyCode.LeftControl) && jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
+        {
+            // 执行起跳
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+            // 【极其关键】起跳后立刻清空两个计时器，防止在空中无限连跳！
+            jumpBufferCounter = 0f;
+            coyoteTimeCounter = 0f;
+        }
+    }
+
+    // --- 逻辑分块 4：处理重力 ---
     private void ApplyGravity()
     {
-        // 如果玩家已经踩在地上，并且 Y 轴速度还在往下掉
         if (controller.isGrounded && velocity.y < 0)
         {
-            // 给一个微小的向下力，确保玩家紧贴地面
             velocity.y = -2f;
         }
 
-        // v = g * t （重力加速度不断累加到 Y 轴速度上）
         velocity.y += gravity * Time.deltaTime;
-
-        // 执行 Y 轴方向的移动
         controller.Move(velocity * Time.deltaTime);
     }
 }

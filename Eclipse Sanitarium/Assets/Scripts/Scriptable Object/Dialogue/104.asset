@@ -26,3 +26,4 @@ MonoBehaviour:
     autoContinueDelay: 0
   closeOnComplete: 1
   CurrentTaskWillComplete: 0
+  targetTaskToComplete: {fileID: 0}

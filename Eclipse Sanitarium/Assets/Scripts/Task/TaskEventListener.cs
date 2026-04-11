@@ -1,11 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// 挂载在场景中始终激活的物体上（例如一个专门管事件的空物体 GameManager 或 SceneEventManager）。
-/// 用于监听某个特定任务完成，然后触发对应的场景表现。
-/// </summary>
-public class TaskEventListener : MonoBehaviour
+[System.Serializable]
+public class TaskEventEntry
 {
     [Header("需要监听的目标任务")]
     public TaskData targetTask;
@@ -15,6 +13,16 @@ public class TaskEventListener : MonoBehaviour
 
     [Header("该任务【完成】时触发的事件")]
     public UnityEvent onTaskCompleted;
+}
+
+/// <summary>
+/// 挂载在场景中始终激活的物体上（例如一个专门管事件的空物体 GameManager 或 SceneEventManager）。
+/// 用于监听特定任务状态变化，支持同时配置多个任务。
+/// </summary>
+public class TaskEventListener : MonoBehaviour
+{
+    [Header("监听任务列表配置")]
+    public List<TaskEventEntry> taskEvents = new List<TaskEventEntry>();
 
     private void Start()
     {
@@ -36,18 +44,23 @@ public class TaskEventListener : MonoBehaviour
 
     private void HandleTaskStarted(TaskData task)
     {
-        // 判断触发的任务是不是我们正在窃听的那个任务
-        if (task == targetTask)
+        foreach (var entry in taskEvents)
         {
-            onTaskStarted?.Invoke();
+            if (entry.targetTask == task)
+            {
+                entry.onTaskStarted?.Invoke();
+            }
         }
     }
 
     private void HandleTaskCompleted(TaskData task)
     {
-        if (task == targetTask)
+        foreach (var entry in taskEvents)
         {
-            onTaskCompleted?.Invoke();
+            if (entry.targetTask == task)
+            {
+                entry.onTaskCompleted?.Invoke();
+            }
         }
     }
 }
