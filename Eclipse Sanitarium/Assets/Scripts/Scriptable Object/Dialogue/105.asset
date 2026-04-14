@@ -34,5 +34,5 @@ MonoBehaviour:
     waitForInput: 1
     autoContinueDelay: 0
   closeOnComplete: 1
-  CurrentTaskWillComplete: 0
+  CurrentTaskWillComplete: 1
   targetTaskToComplete: {fileID: 11400000, guid: b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7, type: 2}

@@ -21,8 +21,8 @@ MonoBehaviour:
   - rid: 90001
   onStartActions: []
   onCompleteActions:
-  - rid: 90002
-  status: 1
+  - rid: 2424162885110595584
+  status: 2
   currentProgress: 0
   totalProgress: 1
   branches: []
@@ -36,8 +36,8 @@ MonoBehaviour:
         description: "\u5B8C\u6210\u4E0E\u62A4\u58EB\u957F\u7684\u56FA\u5B9A\u5BF9\u8BDD"
         dialogueID: HeadNurse_Report_Dialogue
         mustBeFullyRead: 1
-    - rid: 90002
+    - rid: 2424162885110595584
       type: {class: GiveItemAction, ns: , asm: Assembly-CSharp}
       data:
-        itemID: Item_LibraryKey
+        itemID: 
         amount: 1

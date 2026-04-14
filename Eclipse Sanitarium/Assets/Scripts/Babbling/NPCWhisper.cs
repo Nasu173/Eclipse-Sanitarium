@@ -27,7 +27,7 @@ public class NPCWhisper : MonoBehaviour
     private Camera _mainCamera;
     private bool _isPlayerInRange = false;
     private bool _isWhispering = false;
-    private int _currentWhisperIndex = 0;
+    public int _currentWhisperIndex = 0;
     private List<string> _currentWhisperList;
     private Coroutine _whisperCoroutine;
     private AudioSource _audioSource;
