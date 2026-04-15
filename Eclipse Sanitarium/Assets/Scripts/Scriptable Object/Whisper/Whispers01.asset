@@ -18,6 +18,9 @@ MonoBehaviour:
   - phaseIndex: 0
     whisperLines:
     - "\u2026\u8D6B\u5179\u2026\u9891\u7387\u5168\u9519\u4E86\u2026\u4E0D\u662F\u566A\u97F3\u2026\u662F\u53EC\u5524\u2026"
+  - phaseIndex: 1
+    whisperLines:
+    - "\u2026\u9891\u7387\u2026\u540C\u6B65\u4E86\u2026\u5F15\u529B\u2026\u662F\u6447\u7BEE\u66F2\u2026"
   phaseWhispers_En:
   - phaseIndex: 0
     whisperLines:
